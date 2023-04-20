@@ -1,0 +1,2 @@
+# Consultar informacion()
+# Filtrar informacion()

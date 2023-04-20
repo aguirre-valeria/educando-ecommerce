@@ -1,0 +1,155 @@
+import mysql.connector
+
+
+print("================================================")
+print("================================================")
+print("Bienvenidos al CRUD Menu del Equipo PRINT-TECH")
+print("================================================")
+print("================================================")
+
+
+class Conectar():
+
+    def __init__(self):
+        try:
+            self.conexion = mysql.connector.connect(host='localhost',database='educando',user='root',password='1234')
+
+        except mysql.connector.Error as descripcionError:
+            print("Error al conectar a la base de datos", descripcionError)
+
+    def InsertarValor(self):
+       if self.conexion.is_connected():
+           
+            try:
+                cursor= self.conexion.cursor()
+                
+                idCurso=input("Ingrese el número del curso: ")
+                idNombre=input("Ingrese el nombre del curso: ")
+                IdUsuario=input("ingrese el  número de Usuario: ")
+                IdRol=input("ingrese el número de rol: ")
+                
+                sentenciaSQL = "INSERT INTO curso (id_Curso, Nombre, Usuario_id_Usuario, Usuario_Rol_id_Rol) VALUES (%s, %s, %s, %s)"
+                datos = (idCurso, idNombre, IdUsuario, IdRol)
+                
+            
+                cursor.execute(sentenciaSQL,datos)
+                self.conexion.commit()
+                cursor.close()
+                self.conexion.close()
+                print("Se inserto el registro correctamente")
+            except mysql.connector.Error as descripcionError:
+                print("Error al conectar a la base de datos", descripcionError)
+                
+    
+
+    def BuscarObjeto(self):
+       if self.conexion.is_connected():
+            try:
+                cursor= self.conexion.cursor()
+                IdUsuario=int(input("ingrese el número de Usuario: "))
+                sentenciaSQL = "select * from curso where Usuario_id_Usuario = "+str(IdUsuario)
+                
+                cursor.execute(sentenciaSQL)
+               
+                resultadoREAD = cursor.fetchall()
+                self.conexion.close()
+                return print(resultadoREAD)
+
+            except mysql.connector.Error as descripcionError:
+                print("Error al conectar a la base de datos", descripcionError)
+                
+    def DeleteValor(self):
+        if self.conexion.is_connected():
+            try:
+                cursor= self.conexion.cursor()
+                IdCurso=int(input("ingrese el número de Usuario: "))
+                sentenciaSQL = "DELETE FROM curso WHERE Usuario_id_Usuario = "+str(IdCurso)
+            
+                cursor.execute(sentenciaSQL)
+                self.conexion.commit()
+                cursor.close()
+                self.conexion.close()
+                print("se eliminó el registro correctamente")
+            except mysql.connector.Error as descripcionError:
+                print("Error al conectar a la base de datos", descripcionError)
+
+
+
+
+    def UpdateValor(self):
+       if self.conexion.is_connected():
+            try:
+                cursor= self.conexion.cursor()
+                IdNombre=input("Ingrese el nombre: ")
+                IdUsuario=input("ingrese el Usuario: ")
+                sentenciaSQL = "Update curso set Nombre = '"+IdNombre+"' where Usuario_id_Usuario = "+str(IdUsuario)
+            
+                cursor.execute(sentenciaSQL)
+                self.conexion.commit()
+                cursor.close()
+                self.conexion.close()
+                print("Se inserto el registro correctamente")
+            except mysql.connector.Error as descripcionError:
+                print("Error al conectar a la base de datos", descripcionError)
+                
+               
+
+
+
+
+conectar1 = Conectar()
+
+
+menuprincipal=-1
+
+while menuprincipal != 0:
+    conectar1 = Conectar()
+    menuprincipal =int(input
+                   ("Menú Principal \n 1- Ingresar Datos \n 2- Actualizar Datos \n 3- Consultar Datos \n 4- Borrar Datos \n 5- Integrantes del grupo PRINT TECH\n 0- Salir \n"))
+
+    
+    if menuprincipal == 1:
+        print("Ingresando Datos")
+        
+        conectar1.InsertarValor()
+        
+    elif menuprincipal == 2:
+        print("Actualizando Datos")
+        conectar1.UpdateValor()
+        
+    elif menuprincipal == 3:
+        print("Consultando Datos")
+        conectar1.BuscarObjeto()
+        
+    elif menuprincipal == 4:
+        print("Borrando Datos")
+        conectar1.DeleteValor()
+       
+    elif menuprincipal == 5:
+        
+        print("================================================")
+        print("integrantes del grupo PRINT TECH")
+        print("================================================")
+       
+        print(
+            " 1-Aguirre Cintia Valeria Bettiana\n 2-Balza juan \n 3-Romeo Moreno\n 4-Cáceres Ileana\n 5-Walter Díaz\n 6-Luna Eduardo\n 7-Luciano Rinaudo\n 8-Jorge Rojas\n 9-Vera Tamara\n 10-Yon claudia\n")
+        print("================================================")
+        print("================================================")
+        print("¡¡¡Gracias por usar nuestro programa!!!")
+        print("================================================")
+        print("================================================")
+        
+    elif menuprincipal == 0:
+        print("salir, muchas gracias por usar Print-Tech")
+        exit()
+        
+        
+    else:
+        print("Opción no válida, por favor ingrese un valor válido")
+    
+    
+
+    
+        
+            
+    
