@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -14,6 +14,7 @@ import { EcommerceModule } from './ecommerce/ecommerce.module';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     LayautModule,
     PagesModule,
     EcommerceModule

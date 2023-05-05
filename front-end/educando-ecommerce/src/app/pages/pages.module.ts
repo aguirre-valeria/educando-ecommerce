@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -19,7 +20,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
     NosotrosComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [
     AdminComponent,
