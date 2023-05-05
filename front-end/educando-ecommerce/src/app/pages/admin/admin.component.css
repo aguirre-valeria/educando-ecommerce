@@ -1,0 +1,23 @@
+.title
+{
+    margin-top: 30px;
+}
+
+.format
+{
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: auto;
+    text-align: center;
+}
+
+.format_img 
+{
+    display: flex;
+    margin: 10px;
+    background-color: #0d6efd;
+    color: #ffff;
+    border: #0000;
+}
+
