@@ -20,6 +20,14 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [
+    AdminComponent,
+    ContactoComponent,
+    DashboardComponent,
+    LoginComponent,
+    RegistroComponent,
+    NosotrosComponent
+  ],
 })
 export class PagesModule { }
