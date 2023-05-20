@@ -1,0 +1,77 @@
+<div class="checkout-container">
+    <div class="bg-dark text-white container-fluid checkout-title">
+        <h2 class="container pt-4 pb-4" >Your Cart</h2>
+    </div>
+    
+    <!-- empty item -->
+    <ng-container *ngIf="{quantity: quantity$ | async } as dataCart">
+      <div class="container" *ngIf="dataCart.quantity === 0">
+        <div class="pt-2 pb-3 border-bottom container">
+          <div id="empty-item" class="d-flex justify-content-center align-items-center">
+            <div class="d-flex align-items-center justify-content-start p-2 flex-column">
+              <h2 class="mb-3 mt-1">Añade un item a la tienda</h2>
+              <button class="btn btn-primary fs-4 end-buy" routerLink="/cursos">Añadir Cursos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    
+    <!-- checkout -->
+    <div *ngIf="{quantity: quantity$ | async, total: total$ | async, cart: cart$ | async, discount: discount} as dataCart" class="container">
+      <ng-container *ngIf="dataCart.quantity !== 0">
+        <div class="pt-2 pb-3 border-bottom container">
+          <app-checkout-card [cart]="dataCart.cart ? dataCart.cart : []"></app-checkout-card>
+          <!-- total -->
+          <div class="container d-flex align-items-center justify-content-between pt-3 mt-4 ps-2 pe-2 border-top" id="total-container">
+            <h2>Total</h2>
+            <h2>$ <span id="total-cart">{{dataCart.total}}</span></h2>
+          </div>
+          <p class="text-muted ms-2 fw-lighter border-bottom pb-3" id="retiros-local">* Solo retiros locales</p>
+          <!-- final price -->
+          <div class="text-center container mt-4" id="precio-final" *ngIf="!sendContainer">
+            <p class="fs-1 fw-bold">Precio Final $ {{dataCart.total}}</p>
+            <p class="fw-bold fs-3 pb-3">Adjunta tus datos para poder porceder con el pago</p>
+          </div>
+        
+          <!-- form -->
+          <form id="form" class="justify-content-between align-items-center flex-column container-fluid contact-form" (submit)="sendEmail($event)" *ngIf="!sendContainer">
+            <div class="row">
+              <div class="col mb-3 col-md-6 col-12">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required>
+              </div>
+              <div class="col mb-3 col-md-6 col-12">
+                <label for="surname" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="surname" name="surname" placeholder="Apellido" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col mb-3 col-md-6 col-12">
+                <label for="phone" class="form-label">Numero de telefono</label>
+                <input type="number" class="form-control" id="phone" name="phone" placeholder="N° De telefono">
+              </div>
+              <div class="col mb-3 col-md-6 col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electronico" required>
+              </div>
+            </div>
+    
+            <!-- pay seña -->
+            <div class="justify-content-center flex-column align-items-center" id="pago-sena" *ngIf="!sendContainer">
+              <button type="submit" class="btn btn-primary mt-2 p-3 fw-bold shadow-lg fs-3 w-100" id="pagar-sena">Pagar un deposito de $ {{ dataCart.discount}} Pesos</button>
+              <p class="text-muted pt-3 fw-lighter">* Deposito basado en el 10% de la compra</p>
+            </div>
+          </form>
+        
+          <!-- Pago exitoso -->
+          <div class="w-100 m-0 p-5 d-flex justify-content-center align-items-center flex-column" id="pago-exitoso" *ngIf="sendContainer">
+            <h2 class="text-center fs-1 fw-bold pt-4">🎉 Felicitaciones, compra realizada con exito! 🎊</h2>
+            <p class="fs-5 text-center pb-4">Tu pedido estará listo para que lo recojas en nuestra tienda en 24 horas.
+            <br>Sólo tienes que acudir con tu DNI y el dinero pendiente para finalizar el pago.</p>
+            <button type="button" class="btn btn-primary mt-2 p-3 fw-bold shadow-lg fs-4" routerLink="/cursos">Volver a la tienda</button>
+          </div>
+    
+        </div>
+      </ng-container>
+      </div>
