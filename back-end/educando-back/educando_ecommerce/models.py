@@ -73,7 +73,6 @@ class MisCurso(models.Model):
     id_mis_curso = models.AutoField(primary_key=True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
     id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, related_name='mis_curso_cursos')
-    imagen_url = models.URLField(null=True,max_length=500)
     class Meta:
         db_table = 'mis_curso'
         verbose_name = 'Mi Curso comprado'
@@ -119,8 +118,8 @@ class Foro(models.Model):
 class Contacto(models.Model):
     id_contacto = models.AutoField(primary_key=True,default=None)  
     email = models.CharField(max_length=250, null=True)
-    nombre = models.IntegerField(null=True)
-    mensaje = models.IntegerField(null=True)
+    nombre = models.CharField(max_length=80, null=True)
+    mensaje = models.CharField(max_length=500, null=True)
     class Meta:
         db_table = 'contacto'
         verbose_name = 'Consulta de usuario'
