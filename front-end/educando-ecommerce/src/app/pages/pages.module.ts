@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { LayautModule } from '../layouts/layouts.module';
 
 
 
@@ -21,7 +22,8 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayautModule
   ],
   exports: [
     AdminComponent,

@@ -26,7 +26,7 @@ export class CheckoutComponent implements OnInit {
   quantity$ = this.checkoutService.quantityAction$;
   total$ = this.checkoutService.totalAction$;
   cart$ = this.checkoutService.cartAction$;
-
+  
   discount!: number;
   // traigo el service
   constructor(private checkoutService: CkeckoutService) {}

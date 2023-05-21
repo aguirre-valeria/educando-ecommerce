@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Curso } from 'src/app/interfaces/cursos.interface';
 
 @Component({
   selector: 'app-checkout-card',
