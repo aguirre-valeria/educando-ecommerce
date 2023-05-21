@@ -14,5 +14,4 @@ export class CursosService {
   public getCursos(): Observable<Curso> {
     return this.http.get<Curso>(`${this.url}/cursos`);
   }
-  
 }
