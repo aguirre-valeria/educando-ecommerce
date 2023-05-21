@@ -5,7 +5,7 @@ import { Curso } from '../interfaces/cursos.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class CkeckoutService {
+export class CheckoutService {
   cursos: Curso[] = [];
 
   private cartSubject = new BehaviorSubject<Curso[]>([]);

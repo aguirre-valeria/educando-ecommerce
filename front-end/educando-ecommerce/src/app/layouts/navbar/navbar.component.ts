@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CkeckoutService } from 'src/app/services/ckeckout.service';
+import { CheckoutService } from 'src/app/services/checkout.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +8,5 @@ import { CkeckoutService } from 'src/app/services/ckeckout.service';
 })
 export class NavbarComponent {
   quantity$ = this.checkoutService.quantityAction$;
-  constructor(private checkoutService: CkeckoutService) { }
+  constructor(private checkoutService: CheckoutService) { }
 }

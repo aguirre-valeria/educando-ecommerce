@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CkeckoutService } from 'src/app/services/ckeckout.service';
+import { CheckoutService } from 'src/app/services/checkout.service';
 
 @Component({
   selector: 'app-cursos',
@@ -9,5 +9,5 @@ import { CkeckoutService } from 'src/app/services/ckeckout.service';
 export class CursosComponent {
   total$ = this.checkoutService.totalAction$;
 
-  constructor(private checkoutService: CkeckoutService) {}
+  constructor(private checkoutService: CheckoutService) {}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/interfaces/cursos.interface';
-import { CkeckoutService } from 'src/app/services/ckeckout.service';
+import { CheckoutService } from 'src/app/services/checkout.service';
 import { CursosService } from 'src/app/services/cursos.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { CursosService } from 'src/app/services/cursos.service';
 export class CursosContainerComponent implements OnInit {
   cursos: Curso | undefined | any;
 
-  constructor(private cursosService: CursosService, private checkoutService: CkeckoutService) { 
+  constructor(private cursosService: CursosService, private checkoutService: CheckoutService) { 
 
     this.cursosService.getCursos().subscribe({
       next: (cursos: any) => {
