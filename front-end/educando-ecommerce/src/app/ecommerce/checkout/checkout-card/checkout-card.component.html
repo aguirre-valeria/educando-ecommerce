@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-between align-items-center" *ngFor="let item of cart">
+    <div class="d-flex justify-content-between p-2 gap-3 item-cart align-items-center w-100">
+      <span class="fs-4">{{item.identifier}}</span>
+      <div>
+        <span class="me-2 fs-4">$ {{item.price * item.qty}}</span>
+      </div>
+    </div>
+</div>

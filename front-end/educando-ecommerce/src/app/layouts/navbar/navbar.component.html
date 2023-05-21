@@ -50,6 +50,15 @@
                 <div class="d-flex align-items-center">
                     <a routerLink = "/login" class="btn btn-primary py-2 px-4 d-lg-block" >Ingresar</a>
                 </div>
+                <a routerLink="/cursos/checkout" class="d-flex align-items-center mx-2"> 
+                    <button type="button" class="btn btn-primary position-relative" >
+                        <i class="bi bi-cart3"></i>
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" *ngIf="{quantity: quantity$ | async } as dataCart">
+                        <ng-container *ngIf="dataCart.quantity !== 0">{{dataCart.quantity}}</ng-container>
+                      </span>
+                    </button>
+                  </a>
+                
             </div>
         </div>
     </nav>
