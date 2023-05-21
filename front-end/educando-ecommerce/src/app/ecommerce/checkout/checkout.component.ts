@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
-import { CkeckoutService } from '../../services/ckeckout.service';
+import { CheckoutService } from 'src/app/services/checkout.service';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
   
   discount!: number;
   // traigo el service
-  constructor(private checkoutService: CkeckoutService) {}
+  constructor(private checkoutService: CheckoutService) {}
 
   ngOnInit(): void {
     // scroll hacia el top
