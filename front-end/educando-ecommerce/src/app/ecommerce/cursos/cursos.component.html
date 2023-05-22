@@ -1,53 +1,120 @@
-<div class="section-title text-center position-relative mb-4">
-    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nuestros Cursos</h6>
-    <h1 class="display-4">Verifica los nuevos cursos</h1>
-</div>
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="assets/img/courses-3.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cursos para principiantes</h5>
-          <a href="#" class="btn btn-primary">Detalle del Curso</a>
-        </div>
+    <!-- hero -->
+    <div class="p-4 text-center hero-container-products shadow-lg mb-5 bg-none container-fluid d-flex justify-content-center align-items-center flex-column">
+        <h1 class="fw-bold p-2 text-black">Cursos de formación</h1>
+        <p class="lead fw-normal fst-italic pt-2 pb-1 text-black">Con solo un click puede acceder a cualquiera de nuestros cursos</p>
+        <h3 class="pt-0 pb-4 text-black">Busque y añade el curso que mas desee y comience a aprender</h3>
+        <a class="btn btn-primary p-2 text-white" href="/cursos#cursos">Hacer un pedido</a>
     </div>
     
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="assets/img/courses-4.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cursos para principiantes</h5>
-          <a href="#" class="btn btn-primary">Detalle del Curso</a>
+    <!-- 
+        shop title
+        <div class="container text-center pt-2 pb-1" id="elegi">
+            <h2>Elige tu categoria</h2>
         </div>
-    </div>
+        
+        product type filter
+        <div class="container-fluid container overflow-hidden text-center d-flex justify-content-center aling-items-center pb-5 mt-2 mb-2 filter">
+            <div class="col-md-2 col-sm-5 rounded d-flex flex-column justify-content-center align-items-center" id="btn-airpods">
+                <img src="./assets/img/cards/card-airpods.png" class="p-3">
+                <span class="fw-bold filter-link">AirPods</span>
+            </div>
+            <div class="col-md-2 col-sm-5 rounded d-flex flex-column justify-content-center align-items-center" id="btn-iphone">
+                <img src="./assets/img/cards/card-iphone.png" class="p-3">
+                <span class="fw-bold filter-link">iPhone</span>
+            </div>
+            <div class="col-md-2 col-sm-5 rounded d-flex flex-column justify-content-center align-items-center" id="btn-ipad">
+                <img src="./assets/img/cards/card-ipad.png" class="p-3">
+                <span class="fw-bold filter-link">iPad</span>
+            </div>
+            <div class="col-md-2 col-sm-5 rounded d-flex flex-column justify-content-center align-items-center"  id="btn-macbook">
+                <img src="./assets/img/cards/card-mac.png" class="p-3">
+                <span class="fw-bold filter-link">MacBook</span>
+            </div>
+            <div class="col-md-2 col-sm-5 rounded d-flex flex-column justify-content-center align-items-center underline"  id="btn-todos">
+                <img src="./assets/img/cards/card-all.png" class="p-3">
+                <span class="fw-bold filter-link">Alls</span>
+            </div>
+        </div>
+     -->
     
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="assets/img/courses-5.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cursos para principiantes</h5>
-          <a href="#" class="btn btn-primary">Detalle del Curso</a>
+    <app-cursos-container id="cursos"></app-cursos-container>
+  
+    <ng-container *ngIf="{total: total$ | async} as dataCart">
+        <div class="container container-fluid d-flex justify-content-center align-items-center flex-column end-buy-container" *ngIf="dataCart.total !== 0">
+            <h2>Su compra total es de $ {{dataCart.total}}</h2>
+            <!-- <p class="fw-lighter mt-2 text-center">Ir al carrito</p> -->
+            <button class="btn btn-primary fs-2 end-buy" routerLink="/cursos/checkout">Terminar Compra</button>
         </div>
-    </div>
+        
+        <div class="container container-fluid d-flex justify-content-center align-items-center flex-column end-buy-container" *ngIf="dataCart.total === 0">
+            <h2>Añadir item al carrito</h2>
+            <!-- Habia un parrafo -->
+        </div>
+    </ng-container>
     
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="assets/img/courses-6.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cursos para principiantes</h5>
-          <a href="#" class="btn btn-primary">Detalle del Curso</a>
+  
+    <!-- <div class="bg-dark text-white container-fluid find-us">
+        <h2 class="pt-2 pb-2 text-center">Encuentranos aqui</h2>
+        <p class="fw-lighter pb-2 text-center">Los mejores cursos seleccionados de la web</p>
+        <div class="overflow-hidden m-3 rounded shadow-lg find-us-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3406.201436119038!2d-64.21718838489022!3d-31.381008801681563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943298e16c8d3053%3A0x7fc78b1f816ef745!2sOneClick%20C%C3%B3rdoba%20Shopping!5e0!3m2!1sen!2sar!4v1664995580878!5m2!1sen!2sar"></iframe>
         </div>
     </div>
+-->
     
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="assets/img/courses-1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cursos para principiantes</h5>
-          <a href="#" class="btn btn-primary">Detalle del Curso</a>
-        </div>
-    </div>
-    
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="assets/img/courses-2.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Cursos para principiantes</h5>
-          <a href="#" class="btn btn-primary">Detalle del Curso</a>
-        </div>
-    </div>
-</div>
+  
+  <!-- <div class="section-title text-center position-relative mb-4">
+      <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nuestros Cursos</h6>
+      <h1 class="display-4">Verifica los nuevos cursos</h1>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center;">
+      <div class="card" style="width: 18rem; margin: 5px;">
+          <img src="assets/img/courses-3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cursos para principiantes</h5>
+            <a href="#" class="btn btn-primary">Detalle del Curso</a>
+          </div>
+      </div>
+      
+      <div class="card" style="width: 18rem; margin: 5px;">
+          <img src="assets/img/courses-4.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cursos para principiantes</h5>
+            <a href="#" class="btn btn-primary">Detalle del Curso</a>
+          </div>
+      </div>
+      
+      <div class="card" style="width: 18rem; margin: 5px;">
+          <img src="assets/img/courses-5.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cursos para principiantes</h5>
+            <a href="#" class="btn btn-primary">Detalle del Curso</a>
+          </div>
+      </div>
+      
+      <div class="card" style="width: 18rem; margin: 5px;">
+          <img src="assets/img/courses-6.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cursos para principiantes</h5>
+            <a href="#" class="btn btn-primary">Detalle del Curso</a>
+          </div>
+      </div>
+      
+      <div class="card" style="width: 18rem; margin: 5px;">
+          <img src="assets/img/courses-1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cursos para principiantes</h5>
+            <a href="#" class="btn btn-primary">Detalle del Curso</a>
+          </div>
+      </div>
+      
+      <div class="card" style="width: 18rem; margin: 5px;">
+          <img src="assets/img/courses-2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Cursos para principiantes</h5>
+            <a href="#" class="btn btn-primary">Detalle del Curso</a>
+          </div>
+      </div>
+  </div>
+  
+  -->
