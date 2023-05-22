@@ -1,0 +1,19 @@
+.card {
+    width: 300px;
+    min-height: 440px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+  }
+  .img-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .img-card-container img {
+    height: 110px;
+    width: auto;
+  }
+  

@@ -1,0 +1,104 @@
+{
+    "cursos": [
+      {
+        "id": 1,
+        "name": "Introducción a Python",
+        "category": "Programación",
+        "duration": "4 semanas",
+        "price": 49.99,
+        "img": "../../assets/img/courses-1.jpg",
+        "description": "Aprende los fundamentos de la programación en Python y cómo utilizarlo para resolver problemas reales."
+      },
+      {
+        "id": 2,
+        "name": "Desarrollo web con HTML y CSS",
+        "category": "Programación",
+        "duration": "6 semanas",
+        "price": 79.99,
+        "img": "../../assets/img/courses-2.jpg",
+        "description": "Descubre cómo crear sitios web atractivos y funcionales utilizando HTML y CSS."
+      },
+      {
+        "id": 3,
+        "name": "JavaScript avanzado",
+        "category": "Programación",
+        "duration": "8 semanas",
+        "price": 99.99,
+        "img": "../../assets/img/courses-3.jpg",
+        "description": "Profundiza tus conocimientos de JavaScript y aprende a construir aplicaciones web interactivas y dinámicas."
+      },
+      {
+        "id": 4,
+        "name": "Introducción a Java",
+        "category": "Programación",
+        "duration": "5 semanas",
+        "price": 69.99,
+        "img": "../../assets/img/courses-4.jpg",
+        "description": "Aprende los conceptos básicos de la programación en Java y cómo desarrollar aplicaciones robustas."
+      },
+      {
+        "id": 5,
+        "name": "Desarrollo de aplicaciones móviles con React Native",
+        "category": "Programación",
+        "duration": "6 semanas",
+        "price": 89.99,
+        "img": "../../assets/img/courses-5.jpg",
+        "description": "Crea aplicaciones móviles multiplataforma utilizando React Native y aprovecha al máximo el desarrollo ágil."
+      },
+      {
+        "id": 6,
+        "name": "Machine Learning con Python",
+        "category": "Programación",
+        "duration": "10 semanas",
+        "price": 129.99,
+        "img": "../../assets/img/courses-6.jpg",
+        "description": "Descubre cómo aplicar técnicas de machine learning utilizando la biblioteca de Python, scikit-learn."
+      },
+      {
+        "id": 7,
+        "name": "Desarrollo de videojuegos con Unity",
+        "category": "Programación",
+        "duration": "8 semanas",
+        "price": 99.99,
+        "img": "../../assets/img/courses-4.jpg",
+        "description": "Aprende a crear tus propios videojuegos utilizando el popular motor de desarrollo Unity."
+      },
+      {
+        "id": 8,
+        "name": "Introducción a la programación en C++",
+        "category": "Programación",
+        "duration": "6 semanas",
+        "price": 79.99,
+        "img": "../../assets/img/courses-2.jpg",
+        "description": "Aprende los fundamentos de la programación en C++ y cómo desarrollar aplicaciones eficientes."
+      },
+      {
+        "id": 9,
+        "name": "Desarrollo web con Node.js",
+        "category": "Programación",
+        "duration": "8 semanas",
+        "price": 99.99,
+        "img": "../../assets/img/courses-1.jpg",
+        "description": "Aprende a crear aplicaciones web escalables y de alto rendimiento utilizando Node.js y Express."
+      },
+      {
+        "id": 10,
+        "name": "Fundamentos de bases de datos SQL",
+        "category": "Programación",
+        "duration": "4 semanas",
+        "price": 49.99,
+        "img": "../../assets/img/courses-5.jpg",
+        "description": "Aprende los conceptos básicos de las bases de datos relacionales y cómo utilizar SQL para gestionar la información."
+      }
+    ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
