@@ -49,8 +49,8 @@ export class DetailsComponent implements OnInit {
       console.log(this.curso.idDetail)
       this.curso = cursos.find(
         (curso: Curso) =>
-        curso.category === this.categoryDetail && 
-        curso.id.toString() === this.idDetail,
+        curso.id_categoria === this.categoryDetail && 
+        curso.id_curso.toString() === this.idDetail,
         console.log(this.curso)
       );
       console.log(this.curso.name)
