@@ -7,7 +7,6 @@ import { DetailsComponent } from './details/details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutCardComponent } from './checkout/checkout-card/checkout-card.component';
 import { RouterModule } from '@angular/router';
-import { ShopRoutingModule } from './ecommerce.routing.module';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ShopRoutingModule } from './ecommerce.routing.module';
   ],
   imports: [
     CommonModule,
-    ShopRoutingModule,
     RouterModule
   ],
   exports: [
