@@ -9,7 +9,7 @@ class UsuarioAdmin(admin.ModelAdmin):
 class CategoriaAdmin(admin.ModelAdmin): 
     list_display = ('id_categoria','nombre','descripcion')
 class CursoAdmin(admin.ModelAdmin): 
-    list_display = ('id_curso','id_categoria','nombre_curso','duracion','precio','calificacion','fecha_alta_curso','imagen_url')
+    list_display = ('id_curso','id_categoria','nombre_curso','duracion','precio','descripcion','calificacion','fecha_alta_curso','imagen_url')
 class MisCursoAdmin(admin.ModelAdmin): 
     list_display = ('id_mis_curso','id_usuario','id_curso',)
 class CarritoAdmin(admin.ModelAdmin):   
