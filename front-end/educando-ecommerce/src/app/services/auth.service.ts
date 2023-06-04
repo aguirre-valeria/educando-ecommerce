@@ -9,8 +9,8 @@ import * as CryptoJS from 'crypto-js';
 })
 export class AuthService {
 
-  private apiUrl = 'http://127.0.0.1:8000/';
-  // private apiUrl = 'https://educando-test.onrender.com/';
+  // private apiUrl = 'http://127.0.0.1:8000/';
+  private apiUrl = 'https://educando-test.onrender.com/';
   public isAdminLoggedIn: boolean = false;
   public currentUser: Usuario | null = null; // Variable para almacenar los datos del usuario actual logueado
   private cambioEstadoAutenticacion = new Subject<boolean>();
