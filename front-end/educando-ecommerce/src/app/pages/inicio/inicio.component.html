@@ -1,0 +1,116 @@
+<app-header></app-header>
+
+ <!-- Sobre nosotros -->
+ <app-nosotros></app-nosotros>
+ <!-- sobre nosotros fin-->
+
+
+ <div class="section-title text-center position-relative mb-4">
+  <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nuestros Cursos</h6>
+  <h1 class="display-4">Verifica los nuevos cursos</h1>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="card" style="width: 18rem; margin: 5px;" *ngFor="let curso of cursosFiltrados">
+    <img src="{{curso.imagen_url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ curso.nombre_curso }}</h5>
+      <button class="btn btn-secondary fs-6 mr-1" (click)="irADetalles(curso.id_curso)">Detalles</button>
+    </div>
+  </div>
+</div>
+
+ <!-- Cursos Inicio -->
+ <!-- <div class="section-title text-center position-relative mb-4">
+     <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nuestros Cursos</h6>
+     <h1 class="display-4">Verifica los nuevos cursos</h1>
+ </div>
+ <div style="display: flex; justify-content: center; align-items: center;">
+     <div class="card" style="width: 18rem; margin: 5px;">
+         <img src="assets/img/courses-3.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Cursos para principiantes</h5>
+           <a href="#" class="btn btn-primary">Detalle del Curso</a>
+         </div>
+     </div>
+
+     <div class="card" style="width: 18rem; margin: 5px;">
+         <img src="assets/img/courses-4.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Cursos para principiantes</h5>
+           <a href="#" class="btn btn-primary">Detalle del Curso</a>
+         </div>
+     </div>
+
+     <div class="card" style="width: 18rem; margin: 5px;">
+         <img src="assets/img/courses-5.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Cursos para principiantes</h5>
+           <a href="#" class="btn btn-primary">Detalle del Curso</a>
+         </div>
+     </div>
+
+     <div class="card" style="width: 18rem; margin: 5px;">
+         <img src="assets/img/courses-6.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Cursos para principiantes</h5>
+           <a href="#" class="btn btn-primary">Detalle del Curso</a>
+         </div>
+     </div>
+
+     <div class="card" style="width: 18rem; margin: 5px;">
+         <img src="assets/img/courses-1.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Cursos para principiantes</h5>
+           <a href="#" class="btn btn-primary">Detalle del Curso</a>
+         </div>
+     </div>
+
+     <div class="card" style="width: 18rem; margin: 5px;">
+         <img src="assets/img/courses-2.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Cursos para principiantes</h5>
+           <a href="#" class="btn btn-primary">Detalle del Curso</a>
+         </div>
+     </div>
+ </div> -->
+
+
+ <div class="row justify-content-center bg-image mx-0 mb-5">
+  <div class="col-lg-6 py-5">
+      <div class="bg-white p-5 my-5">
+          <h1 class="text-center mb-4">Empieza a estudiar ya mismo</h1>
+          <form (ngSubmit)="comprarAhora()">
+              <div class="form-row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <select class="custom-select bg-light border-0 px-3" style="height: 60px;" [(ngModel)]="selectedCourseId" name="selectedCourseId" (change)="actualizarSelectedCourseId($event)">
+                              <option [value]="selectedCourseId">Selecciona el curso</option>
+                              <!-- <option value="1">Introducción a la programación orientada a objetos con PHP</option>
+                              <option value="2">Programación para principiantes - Primeros pasos</option>
+                              <option value="3">Python Practicando. Desde 0 hasta Desarrollador en Python</option>
+                              <option value="1">Curso de C++: Básico a Avanzado</option>
+                              <option value="2">Máster Completo en Java de cero a experto</option>
+                              <option value="3">ReactiveX - RxJs: De cero hasta los detalles</option> -->
+                              <option *ngFor="let curso of cursos" [value]="curso.id_curso">{{ curso.nombre_curso }}</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block pt-3" type="submit" style="height: 60px;">Comprar Ahora</button>
+                      <!-- <a class="btn btn-primary btn-block pt-3" type="submit" href="registro.html" style="height: 60px;">Comprar Ahora</a> -->
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+ <!-- Cursos Final -->
+
+ <!-- Administradores -->
+ <app-administradores></app-administradores>
+ <!-- Administradores -->
+
+ <!-- Zona de contacto -->
+ <app-contacto></app-contacto>
+ <!-- Finaliza Zona de contacto -->

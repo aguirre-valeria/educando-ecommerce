@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CursosService {
-  url: String= "http://localhost:3000";
+  url: String= "https://educando-test.onrender.com";
   
   constructor(private http:HttpClient) { }
 
   public getCursos(): Observable<Curso> {
-    return this.http.get<Curso>(`${this.url}/cursos`);
+    return this.http.get<Curso>(`${this.url}/Curso`);
   }
 }
