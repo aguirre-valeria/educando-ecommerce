@@ -10,7 +10,7 @@ import { EcommerceModule } from './ecommerce/ecommerce.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PagesModule,
     EcommerceModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

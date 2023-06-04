@@ -16,7 +16,7 @@ export class RegistroComponent {
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]+$')]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]+$')]],
       passwordConfirmation: ['', Validators.required],
       id_rol_id: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
@@ -53,6 +53,4 @@ export class RegistroComponent {
     );
   }
 }
-
-
 

@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin/admin.component';
+import { AdministradoresComponent } from './administradores/administradores.component';
 import { ContactoComponent } from './contacto/contacto.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { LayautModule } from '../layouts/layouts.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { InicioComponent } from './inicio/inicio.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
   declarations: [
-    AdminComponent,
+    AdministradoresComponent,
     ContactoComponent,
-    DashboardComponent,
+    InicioComponent,
     LoginComponent,
     RegistroComponent,
     NosotrosComponent
@@ -24,12 +26,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     LayautModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
-    AdminComponent,
+    AdministradoresComponent,
     ContactoComponent,
-    DashboardComponent,
+    InicioComponent,
     LoginComponent,
     RegistroComponent,
     NosotrosComponent

@@ -1,0 +1,47 @@
+.card-header {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.notification-icon,
+.cart-icon,
+.profile-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #007bff;
+}
+
+.timeline-content {
+  margin-left: 15px;
+}
