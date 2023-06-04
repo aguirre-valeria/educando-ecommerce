@@ -1,60 +1,102 @@
 <!--Formulario de Registro-->
 <section class="p-5 m-5">
-    <div class="container py-5 h-100">
-      <div class="row d-flex align-items-center justify-content-center h-100">
-        <div class="col-md-8 col-lg-7 col-xl-6 login-image w-100">
-          <img src="../../../assets/img/sign-up.png"
-            class="img-fluid" alt="..." class="img-fluid">
-        </div>
-        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <form class="needs-validation" novalidate id="form-register">
-            <!-- Name input -->
-            <div class="form-outline mb-4">
-              <label class="form-label" for="name">Nombre y apellido</label>
-              <input type="text" id="name" class="form-control form-control-lg" required/>
-              <div class="invalid-feedback">
-                Ingresa tu nombre y apellido.
-              </div>
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6 login-image w-100">
+        <img src="../../../assets/img/sign-up.png"
+          class="img-fluid" alt="..." class="img-fluid">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form class="needs-validation" novalidate id="form-register" [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="name">Nombre</label>
+            <input type="text" id="nombre" class="form-control form-control-lg" formControlName="nombre" [ngClass]="{ 'is-invalid': registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched }"/>
+        <div class="invalid-feedback" *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
+        <div *ngIf="registroForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+              Ingresa tu nombre.
             </div>
+          </div>
+
+
+          <!-- Apellido input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="name">Apellido</label>
+        <input type="text" id="name" class="form-control form-control-lg" formControlName="apellido" [ngClass]="{ 'is-invalid': registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched }"/>
+        <div class="invalid-feedback" *ngIf="registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched">
+        <div *ngIf="registroForm.get('apellido')?.errors?.['required']">El apellido es requerido.</div>
+          Ingresa tu apellido.
+        </div>
+      </div>
+
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <label class="form-label" for="email">Correo electrónico</label>
-              <input type="email" id="email" class="form-control form-control-lg" required/>
-              <div class="invalid-feedback">
-                Ingresa tu correo electrónico.
+          <label class="form-label" for="email">Correo electrónico</label>
+
+          <input type="email" id="email" class="form-control form-control-lg" formControlName="email" [ngClass]="{ 'is-invalid': registroForm.get('email')?.invalid && registroForm.get('email')?.touched }"/>
+
+          <div class="invalid-feedback" *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
+          <div *ngIf="registroForm.get('email')?.errors?.['required']">El email es requerido.</div>
+          <div *ngIf="registroForm.get('email')?.errors?.['email']">Ingrese un email válido.</div>
+          Ingresa tu correo electrónico.
+          </div>
             </div>
-              
+
+
+
+          <!-- Password input -->
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': registroForm.get('password')?.invalid && registroForm.get('password')?.touched }">
+            <div class="invalid-feedback" *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
+              <div *ngIf="registroForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+              <div *ngIf="registroForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+              <div *ngIf="registroForm.get('password')?.errors?.['pattern']">La contraseña debe contener al menos una mayúscula, una minúscula y un número.</div>
             </div>
-  
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <label class="form-label" for="password">Contraseña</label>
-              <input type="password" id="password" alt="strongPass" class="form-control form-control-lg" required/>
-              <div class="invalid-feedback">
-                Ingresa una contraseña.
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-label" for="passwordConfirmation">Confirmar contraseña</label>
+            <input type="password" id="passwordConfirmation" formControlName="passwordConfirmation" class="form-control" [ngClass]="{ 'is-invalid': registroForm.get('passwordConfirmation')?.invalid && registroForm.get('passwordConfirmation')?.touched }">
+            <div class="invalid-feedback" *ngIf="registroForm.get('passwordConfirmation')?.invalid && registroForm.get('passwordConfirmation')?.touched">
+              <div *ngIf="registroForm.get('passwordConfirmation')?.errors?.['required']">Debe confirmar la contraseña.</div>
+              <div *ngIf="registroForm.get('passwordConfirmation')?.errors?.['validateEqual']">Las contraseñas no coinciden.</div>
             </div>
+          </div>
+
+
+          <!-- Rol input -->
+          <div class="form-group">
+            <label for="rol">Rol:</label><br>
+            <input type="radio" id="rol_profesor" name="id_rol_id" value="2" formControlName="id_rol_id">
+            <label for="rol_profesor">Profesor</label><br>
+            <input type="radio" id="rol_estudiante" name="id_rol_id" value="1" formControlName="id_rol_id">
+            <label for="rol_estudiante">Estudiante</label><br>
+          </div>
+
+          <!-- <div class="d-flex justify-content-start align-items-center mb-4"> -->
+            <!-- Checkbox -->
+            <!-- <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="remember" checked />
+              <label class="form-check-label" for="remember"> Recuérdame </label>
             </div>
-  
-            <div class="d-flex justify-content-start align-items-center mb-4">
-              <!-- Checkbox -->
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="remember" checked />
-                <label class="form-check-label" for="remember"> Recuérdame </label>
-              </div>
-            </div>
-  
-            <!-- Submit button -->
-            <button type="submit" id="btnRegister" class="btn btn-primary py-2 px-4 d-lg-block btn-block" >Regístrate</button>
-  
-            <div class="divider d-flex align-items-center my-4">
-              <p class="text-center fw-bold mx-3 mb-0 text-muted">O</p>
-            </div>
-  
-            <a class="btn btn-primary py-2 px-4 d-lg-block btn-block" routerLink="/login"
-              role="button">Inicia sesión</a>
-          </form>
-        </div>
+          </div> -->
+
+
+          <!-- Submit button -->
+          <button type="submit" [disabled]="registroForm.invalid" id="btnRegister" class="btn btn-primary py-2 px-4 d-lg-block btn-block" >Regístrate</button>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-muted">O</p>
+          </div>
+
+          <a class="btn btn-primary py-2 px-4 d-lg-block btn-block" routerLink="/login"
+            role="button">Inicia sesión</a>
+        </form>
       </div>
     </div>
+  </div>
 </section>

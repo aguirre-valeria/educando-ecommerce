@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Contenido principal -->
+    <div class="col-md-12">
+      <!-- Cabecera de la página -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Hola, {{ userName }} {{userSurname}} </h1>
+        <div>
+          <!-- Elementos de la cabecera: Input de búsqueda, campanita de notificaciones, carrito de compra, perfil -->
+          <input type="text" placeholder="Buscar" />
+          <span class="notification-icon">...</span>
+          <span class="cart-icon">...</span>
+          <span class="profile-icon" (click)="toggleProfileMenu()">...</span>
+          <!-- Menú desplegable de perfil -->
+          <div class="profile-menu" *ngIf="showProfileMenu">
+            <!-- Contenido del menú de perfil -->
+            <ul>
+              <li>{{ userRole }}</li>
+              <li>Mi Perfil</li>
+              <li>Cerrar sesión</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadros con gráficos -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cursos adquiridos</h5>
+              <p class="card-text">{{ purchasedCoursesCount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cursos completados</h5>
+              <p class="card-text">{{ completedCoursesCount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Certificaciones</h5>
+              <p class="card-text">{{ certificationsCount }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadro último curso visto -->
+      <div class="card mt-4">
+        <div class="card-header">
+          Último curso visto
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ lastCourseTitle }}</h5>
+          <p class="card-text">{{ lastCourseDescription }}</p>
+          <button class="btn btn-primary">Continuar</button>
+        </div>
+      </div>
+
+      <!-- Cuadro línea temporal y avance de cursos -->
+      <div class="card mt-4">
+        <div class="card-header">
+          Línea temporal y avance de cursos
+        </div>
+        <div class="card-body">
+          <!-- Aquí puedes mostrar la línea temporal y el avance de cursos -->
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let course of courses; let i = index">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h5>{{ course.title }}</h5>
+                <p>{{ course.progress }}% completado</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
