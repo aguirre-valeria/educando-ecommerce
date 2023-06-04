@@ -43,7 +43,7 @@ export class CheckoutService {
   }
 
   private addToCart(curso: Curso): void {
-    const isProductInCart = this.cursos.find(({ id, category }) => id == curso.id && category == curso.category)
+    const isProductInCart = this.cursos.find(({ id_curso, id_categoria }) => id_curso == curso.id_curso && id_categoria == curso.id_categoria)
 
     if (isProductInCart) {
       isProductInCart.qty += 1;
@@ -60,7 +60,7 @@ export class CheckoutService {
   }
 
   private calcTotal(): void {
-    const total = this.cursos.reduce((acc, prod) => acc += (prod.price * prod.qty), 0);
+    const total = this.cursos.reduce((acc, prod) => acc += (prod.precio * prod.qty), 0);
     this.totalSubject.next(total);
   } 
   constructor() { }

@@ -20,7 +20,7 @@ export class CursosContainerComponent implements OnInit {
     this.cursosService.getCursos().subscribe({
       next: (cursos: any) => {
         this.cursos = cursos;
-        //console.log(cursos);
+        console.log(cursos);
       },
       error: (errorData) => {
         //console.error(errorData);

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import (AbstractBaseUser,PermissionsMixin,BaseUserManager,Group)
 
 # Create your models here.
   
@@ -7,45 +8,73 @@ class Rol(models.Model):
     nombre_rol = models.CharField( max_length=50, null=True)
     alta_rol = models.DateTimeField(null=True)
     baja_rol = models.DateTimeField(null=True, default=None, blank=True)
+    grupos = models.ManyToManyField(Group, related_name ='roles')
     class Meta:
         db_table = 'rol'
         verbose_name = 'Rol de usuario'
         verbose_name_plural = 'Roles de usuarios'
-    def __unicode__(self):
-        return self.id_rol
+
     def __str__(self) :
         return str(self.id_rol)
 
 
-class Usuario(models.Model):
+#===========================================================================================================================================================================
+
+class UserManager(BaseUserManager): #BaseUserManager proporciona un método llamado create_user que te permite crear y guardar un nuevo usuario en la base de datos. 
+    def create_user(self, email, password, id_rol_id, **extra_fields):
+        if not email:
+            raise ValueError('Falta e-mail')
+        if not password:
+            raise ValueError('Falta ingresar password')
+        user = self.model(email=email, id_rol_id=id_rol_id, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, email, password):
+
+        user = self.create_user(email=email, password=password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        return user
+      
+class Usuario(AbstractBaseUser,PermissionsMixin):
     id_usuario = models.AutoField(primary_key=True)
     id_rol = models.ForeignKey(Rol, on_delete=models.CASCADE, null=True, related_name='usuario_rol')
-    email = models.CharField(max_length=250, null=True)
+    email = models.CharField(unique = True, max_length=250, null=True)
     nombre = models.CharField(max_length=80, null=True)
     apellido = models.CharField(max_length=80, null=True)
-    password = models.CharField(max_length=45, null=True)
+    password = models.CharField(max_length=100, null=True)
     fecha_alta_usuario = models.DateTimeField(null=True, auto_now_add=True)
     fecha_baja_usuario = models.DateTimeField(null=True, default=None, blank=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
+    # Configura el administrador de usuarios personalizado
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS =  ['password']
     class Meta:
         db_table = 'usuario'
         verbose_name = 'Usuario registrado mediante el front'
         verbose_name_plural = 'Usuarios registrados mediante el front'
 
-    def __str__(self):
+    def str(self):
         return str(self.id_usuario)
+
+#===========================================================================================================================================================================
 
 class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=45, null=True)
-    descripcion = models.CharField(max_length=45, null=True)
+    descripcion = models.CharField(max_length=250, null=True)
     class Meta:
         db_table = 'categoria'
         verbose_name = 'Categoria de curso'
         verbose_name_plural = 'Categorias de cursos'
         
-    def __unicode__(self):
-        return self.id_categoria
     def __str__(self) :
         return str(self.id_categoria)
 
@@ -55,6 +84,7 @@ class Curso(models.Model):
     nombre_curso = models.CharField(max_length=80, null=True)
     duracion = models.IntegerField(null=True)
     precio = models.IntegerField(null=True)
+    descripcion = models.CharField(max_length= 2000, null=True)
     calificacion= models.FloatField( null=True,default=None)
     fecha_alta_curso = models.DateTimeField(null=True, auto_now_add=True)
     imagen_url = models.URLField(null=True,max_length=500)
@@ -63,8 +93,6 @@ class Curso(models.Model):
         verbose_name = 'Curso'
         verbose_name_plural = 'Cursos'
         
-    def __unicode__(self):
-        return self.id_curso
     def __str__(self):
         return str(self.id_curso)
 
@@ -78,8 +106,6 @@ class MisCurso(models.Model):
         verbose_name = 'Mi Curso comprado'
         verbose_name_plural = 'Mis Cursos comprados'
         
-    def __unicode__(self):
-        return self.id_mis_curso
     def __str__(self) :
         return str(self.id_mis_curso)
 
@@ -94,8 +120,6 @@ class Carrito(models.Model):
         verbose_name = 'Curso seleccionado para comprar'
         verbose_name_plural = 'Cursos seleccionados para comprar'
     
-    def __unicode__(self):
-        return self.id_carrito
     def __str__(self) :
         return str(self.id_carrito)
 
@@ -110,8 +134,6 @@ class Foro(models.Model):
         verbose_name = 'Foro de consulta'
         verbose_name_plural = 'Foros de consultas'
     
-    def __unicode__(self):
-        return self.id_foro
     def __str__(self) :
         return str(self.id_foro)
 
@@ -120,12 +142,11 @@ class Contacto(models.Model):
     email = models.CharField(max_length=250, null=True)
     nombre = models.CharField(max_length=80, null=True)
     mensaje = models.CharField(max_length=500, null=True)
+
     class Meta:
         db_table = 'contacto'
         verbose_name = 'Consulta de usuario'
         verbose_name_plural = 'Consultas de usuarios'
     
-    def __unicode__(self):
-        return self.id_contacto
     def __str__(self) :
         return str( self.id_contacto)
