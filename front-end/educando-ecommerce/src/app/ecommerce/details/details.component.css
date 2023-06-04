@@ -1,0 +1,36 @@
+.detail-main-container{
+    min-height: 70vh;
+}
+.detail-container{
+    margin: 20px auto;
+    margin-top: 100px;
+    padding: 20px;
+}
+.img-detail{
+    width: 100%;
+    padding: 0 20px 30px 10px;
+}
+.img-card-detail{
+    width: 20%;
+}
+.detail-text{
+    width: 70%;
+}
+.buttons-details{
+    width: 100% !important;
+}
+@media (max-width: 500px){
+    .detail-container{
+        flex-direction: column;
+    }
+    .img-card-detail{
+        width: 100%;
+    }
+    .detail-main-container{
+        margin: 20px;
+        min-height: 50vh;
+    }
+    .detail-text{
+        padding-bottom: 30px;
+    }
+}
