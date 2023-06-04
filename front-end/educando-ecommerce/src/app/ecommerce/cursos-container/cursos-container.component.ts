@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Curso } from 'src/app/interfaces/cursos.interface';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { CursosService } from 'src/app/services/cursos.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cursos-container',
@@ -15,12 +16,14 @@ import { CursosService } from 'src/app/services/cursos.service';
 export class CursosContainerComponent implements OnInit {
   cursos: Curso | undefined | any;
 
-  constructor(private cursosService: CursosService, private checkoutService: CheckoutService) { 
+  @Output() addToCartClick = new EventEmitter<Curso>();
+
+  constructor(private cursosService: CursosService, private checkoutService: CheckoutService) {
 
     this.cursosService.getCursos().subscribe({
       next: (cursos: any) => {
         this.cursos = cursos;
-        //console.log(cursos);
+        console.log(cursos);
       },
       error: (errorData) => {
         //console.error(errorData);
@@ -32,6 +35,7 @@ export class CursosContainerComponent implements OnInit {
   }
 
   addToCart(curso: Curso): void {
+    console.log('Evento addToCartClick recibido:', curso);
     this.checkoutService.updateCart(curso);
   }
 }

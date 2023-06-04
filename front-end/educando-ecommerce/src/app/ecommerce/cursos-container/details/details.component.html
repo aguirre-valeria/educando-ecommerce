@@ -1,0 +1,18 @@
+<div class="detail-main-container d-flex flex-column justify-content-center align-items-center">
+    <div class="container shadow-lg rounded detail-container d-flex justify-content-around align-items-center">
+        <div class="img-card-detail">
+            <img src="{{curso.imagen_url}}" class="img-detail pt-4">
+        </div>
+        <div class="d-flex justify-content-around flex-column align-items-start detail-text">
+            <div class="pb-4">
+                <h5 class="card-title mb-4">{{curso.nombre_curso}}</h5>
+                <p class="card-text">{{curso.descripcion}}</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center buttons-details">
+                <span class="fs-4 fw-bold">$ {{curso.precio}}</span>
+                <button class="btn btn-primary fs-6" (click)="onClick()">Añadir</button>
+                <button class="btn btn-secondary fs-6" routerLink="/cursos">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>

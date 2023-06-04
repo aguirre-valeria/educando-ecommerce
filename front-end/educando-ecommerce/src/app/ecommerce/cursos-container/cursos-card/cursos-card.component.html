@@ -1,15 +1,15 @@
 <div class="card p-2 rounded border-0 shadow-sm">
   <div class="img-card-container">
-    <img src="{{curso.img}}" class="card-img-top">
+    <img src="{{curso.imagen_url}}" class="card-img-top">
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{curso.name}}</h5>
-    <p class="card-text">{{curso.description}}</p>
+    <h5 class="card-title">{{curso.nombre_curso}}</h5>
+    <p class="card-text">{{curso.descripcion}}</p>
   </div>
   <div>
       <div class="card-body d-flex justify-content-between align-items-center">
-        <span class="fs-5 fw-bold mr-2">$ {{curso.price}}</span>
-        <button class="btn btn-secondary fs-6 mr-1" routerLink="details/{{curso.category}}/{{curso.id}}">Detalles</button>
+        <span class="fs-5 fw-bold mr-2">$ {{curso.precio}}</span>
+        <button class="btn btn-secondary fs-6 mr-1" routerLink="details/{{curso.id_categoria}}/{{curso.id_curso}}">Detalles</button>
         <button class="btn btn-primary fs-6" (click)="onClick()">Añadir</button>
       </div>
   </div>
