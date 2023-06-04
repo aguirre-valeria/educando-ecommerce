@@ -8,7 +8,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { LayautModule } from '../layouts/layouts.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import { LayautModule } from '../layouts/layouts.module';
   imports: [
     CommonModule,
     AppRoutingModule,
-    LayautModule
+    LayautModule,
+    ReactiveFormsModule
   ],
   exports: [
     AdminComponent,
