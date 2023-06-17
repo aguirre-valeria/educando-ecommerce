@@ -7,10 +7,6 @@ export interface Curso {
   fecha_alta_curso: string,
   imagen_url: string,
   descripcion: string;
-  id_categoria: string,
-  //category: string;
-  //price: number;
-  //identifier: string;
-  //img: string;
+  id_categoria: number,
   qty: number
 }

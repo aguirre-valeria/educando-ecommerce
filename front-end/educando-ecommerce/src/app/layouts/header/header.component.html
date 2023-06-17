@@ -6,12 +6,12 @@
         <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <button class="btn btn-outline-light bg-white text-body px-4" type="button" data-toggle="dropdown"
+                    <button class="btn btn-outline-light bg-white text-body px-4 btn-rect" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Cursos</button>
                 </div>
-                <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Búsqueda">
+                <input type="text" class="form-control border-light btn-rect" style="padding: 30px 25px;" placeholder="Búsqueda" [(ngModel)]="filtro">
                 <div class="input-group-append">
-                    <button class="btn btn-secondary px-4 px-lg-5">Buscar</button>
+                    <button class="btn btn-secondary px-4 px-lg-5 btn-rect" (click)="buscarCursos()">Buscar</button>
                 </div>
             </div>
         </div>

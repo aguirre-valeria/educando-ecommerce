@@ -9,65 +9,73 @@ import * as CryptoJS from 'crypto-js';
 })
 export class AuthService {
 
-  private apiUrl = 'http://127.0.0.1:8000/';
-  // private apiUrl = 'https://educando-test.onrender.com/';
+  // URL de la API
+  private apiUrl = 'https://educando-test.onrender.com/';
+
+  // Variable para verificar si un administrador ha iniciado sesión
   public isAdminLoggedIn: boolean = false;
-  public currentUser: Usuario | null = null; // Variable para almacenar los datos del usuario actual logueado
+
+  // Variable para almacenar los datos del usuario actual logueado
+  public currentUser: Usuario | null = null;
+
+  // Subject para notificar cambios en el estado de autenticación
   private cambioEstadoAutenticacion = new Subject<boolean>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
+  // Retorna un Observable para suscribirse a los cambios de estado de autenticación
   getCambioEstadoAutenticacion() {
     return this.cambioEstadoAutenticacion.asObservable();
   }
 
+  // Notifica a los componentes suscritos que se ha iniciado sesión
   iniciarSesionSuccess() {
-    // Notificar a los componentes suscritos que se ha iniciado sesión
     this.cambioEstadoAutenticacion.next(true);
   }
 
+  // Registra un usuario en la API
   registrarUsuario(usuario: any): Observable<any> {
-    const url = `${this.apiUrl}Registro/`; // Reemplaza con la ruta adecuada para el registro en tu API
+    const url = `${this.apiUrl}registro/`;
     return this.http.post(url, usuario);
   }
 
+  // Inicia sesión en la API con el email y la contraseña proporcionados
   iniciarSesion(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}Login/`, { email, password })
+    return this.http.post<any>(`${this.apiUrl}login/`, { email, password })
       .pipe(
         tap(response => {
-          // Almacenar el token de acceso en el almacenamiento local o en una variable de tu elección
           const token = response.token;
           const usuario = response.usuario;
 
-          console.log(usuario)
-
           // Encriptar los datos sensibles antes de almacenarlos en el LocalStorage
-        const encryptedUser = this.encryptData(usuario);
+          const encryptedUser = this.encryptData(usuario);
 
-        // this.currentUser = usuario;
+          // Guardar el token de acceso y los datos del usuario en el LocalStorage
+          localStorage.setItem('accessToken', token);
+          localStorage.setItem('currentUser', encryptedUser);
 
-        // Guardar el token de acceso y los datos del usuario en el LocalStorage
-        localStorage.setItem('accessToken', token);
-        localStorage.setItem('currentUser', encryptedUser);
-
-          // Guardar el token de acceso para futuras solicitudes a la API
-          // Puedes utilizar localStorage u otra forma de almacenamiento seguro
-        this.iniciarSesionSuccess();
+          // Notifica que se ha iniciado sesión exitosamente
+          this.iniciarSesionSuccess();
         })
       );
   }
 
+  // Encripta los datos utilizando AES
   private encryptData(data: any): string {
     const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), 'encryptionKey').toString();
     return encryptedData;
   }
 
+  // Desencripta los datos utilizando AES
   private decryptData(encryptedData: string): string {
     const decryptedBytes = CryptoJS.AES.decrypt(encryptedData, 'encryptionKey');
     const decryptedData = decryptedBytes.toString(CryptoJS.enc.Utf8);
     return decryptedData;
   }
 
+  // Obtiene el usuario actual desde el LocalStorage
   getCurrentUser(): Usuario | null {
     const encryptedData = localStorage.getItem('currentUser');
     if (encryptedData) {
@@ -77,12 +85,14 @@ export class AuthService {
     return null;
   }
 
+  // Verifica si el usuario está autenticado
   estaAutenticado(): boolean {
     // Verificar si el token de acceso está presente en el almacenamiento local o en la variable donde lo guardaste
     const token = localStorage.getItem('accessToken');
     return !!token; // Retorna true si el token existe, false si no existe
   }
 
+  // Cierra la sesión del usuario
   cerrarSesion(): void {
     // Eliminar el token de acceso del almacenamiento local o de la variable donde lo guardaste
     localStorage.removeItem('accessToken');
@@ -90,6 +100,7 @@ export class AuthService {
     this.cambioEstadoAutenticacion.next(false);
   }
 
+  // Obtiene los cursos del usuario desde la API
   obtenerCursosUsuario(): Observable<any> {
     const token = localStorage.getItem('accessToken');
 
@@ -98,7 +109,7 @@ export class AuthService {
       return of([]);
     }
 
-    const url = `${this.apiUrl}Mis_cursos/`; // Reemplaza con la ruta adecuada para obtener los cursos del usuario en tu API
+    const url = `${this.apiUrl}mis_cursos/`;
 
     // Realiza una solicitud POST a la API para obtener los cursos del usuario
     return this.http.post<any>(url, { token }).pipe(

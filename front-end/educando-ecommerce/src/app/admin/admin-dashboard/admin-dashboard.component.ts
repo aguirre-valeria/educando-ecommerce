@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
+
 export class AdminDashboardComponent implements OnInit {
   userName: string = 'Usuario';
   userSurname: string = 'Prueba';
@@ -17,17 +18,13 @@ export class AdminDashboardComponent implements OnInit {
   certificationsCount: number = 0;
   lastCourseTitle: string = 'Curso de Angular Avanzado';
   lastCourseDescription: string = 'Aprende a construir aplicaciones avanzadas con Angular';
+  lastCourseImage: string | any;
   courses: any[] = [];
-  /* courses: any[] = [
-    { title: 'Curso 1', progress: 50 },
-    { title: 'Curso 2', progress: 75 },
-    { title: 'Curso 3', progress: 30 }
-    // Agrega aquí más cursos o puedes obtenerlos dinámicamente desde un servicio
-  ]; */
-
   currentUser: Usuario | null = null;
 
-  constructor(private autenticacionService: AuthService) {}
+  constructor(
+    private autenticacionService: AuthService
+  ) {}
 
   ngOnInit() {
     this.autenticacionService.getCambioEstadoAutenticacion().subscribe(autenticado => {
@@ -44,6 +41,7 @@ export class AdminDashboardComponent implements OnInit {
         this.userRole = 1;
       }
     });
+    
     this.currentUser = this.autenticacionService.getCurrentUser();
     this.userName = this.currentUser?.nombre || '';
     this.userSurname = this.currentUser?.apellido || '';
@@ -67,8 +65,9 @@ export class AdminDashboardComponent implements OnInit {
         if (this.courses.length > 0) {
           const lastCourse = this.courses[this.courses.length - 1];
           console.log(lastCourse)
-          this.lastCourseTitle = lastCourse.title;
-          this.lastCourseDescription = lastCourse.description;
+          this.lastCourseTitle = lastCourse.nombre_curso;
+          this.lastCourseDescription = lastCourse.descripcion_curso;
+          this.lastCourseImage = lastCourse.imagen_url;
         }
       },
       (error) => {

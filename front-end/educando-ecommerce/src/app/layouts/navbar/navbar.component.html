@@ -1,81 +1,41 @@
 <!-- Inicio de la Topbar -->
 <div class="container-fluid bg-dark">
   <div class="row py-2 px-lg-5">
-      <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-          <div class="d-inline-flex align-items-center text-white">
-              <small><i class="fa fa-phone-alt mr-2"></i>+54 351 5646789</small>
-              <small class="px-3">|</small>
-              <small><i class="fa fa-envelope mr-2"></i>info@educando.com</small>
-          </div>
+    <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+      <div class="d-inline-flex align-items-center text-white">
+        <small><i class="bi bi-telephone-fill mr-2"></i>+54 351 5646789</small>
+        <small class="px-3">|</small>
+        <small><i class="bi bi-envelope-fill mr-2"></i>info@educando.com</small>
       </div>
-      <div class="col-lg-6 text-center text-lg-right">
-          <div class="d-inline-flex align-items-center">
-              <a class="text-white px-2" href="">
-                  <i class="fab fa-facebook-f"></i>
-              </a>
-              <a class="text-white px-2" href="">
-                  <i class="fab fa-twitter"></i>
-              </a>
-              <a class="text-white px-2" href="">
-                  <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a class="text-white px-2" href="">
-                  <i class="fab fa-instagram"></i>
-              </a>
-              <a class="text-white pl-2" href="">
-                  <i class="fab fa-youtube"></i>
-              </a>
-          </div>
-      </div>
-  </div>
-</div>
-<!-- Fin de la Topbar -->
-<div class="menu-wrap">
-  <input type="checkbox" class="toggler">
-  <div class="hamburger"><div></div></div>
-  <div class="menu">
-    <div>
-      <div>
-        <ul>
-          <li><a routerLink="/mis-cursos">Mis Cursos</a></li>
-          <li><a routerLink="/ruta-aprendizaje">Mi Ruta de Aprendizaje</a></li>
-          <li><a routerLink="/mis-certificaciones">Mis Certificaciones</a></li>
-          <li><a (click)="logout()">Cerrar Sesión</a></li>
-        </ul>
+    </div>
+    <div class="col-lg-6 text-center text-lg-right">
+      <div class="d-inline-flex align-items-center">
+        <a class="text-white px-2" href="">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a class="text-white px-2" href="">
+          <i class="bi bi-twitter"></i>
+        </a>
+        <a class="text-white px-2" href="">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a class="text-white px-2" href="">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a class="text-white pl-2" href="">
+          <i class="bi bi-youtube"></i>
+        </a>
       </div>
     </div>
   </div>
 </div>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Logo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/mis-cursos">Mis cursos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/mis-favoritos">Mis favoritos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/mis-certificaciones">Mis Certificaciones</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Cerrar sesión</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<!-- Fin de la Topbar -->
 
 <!-- Navbar -->
 <div class="container-fluid p-0">
-  <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+  <nav class="navbar navbar-expand-md bg-white navbar-light py-3 py-lg-0 px-lg-5 mx-xxl-5">
     <!-- Resto del código HTML de la barra de navegación -->
-    <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+    <div class="collapse navbar-collapse justify-content-between px-lg-3 mx-xxl-5" id="navbarCollapse">
       <div class="navbar-nav mx-auto py-0">
         <!-- Enlaces comunes -->
         <ng-container *ngIf="!isAdminLoggedIn; else clientMenu">
@@ -84,17 +44,32 @@
           <a routerLink="/cursos" class="nav-item nav-link">Cursos</a>
           <a routerLink="/administradores" class="nav-item nav-link">Administradores</a>
           <a routerLink="/contacto" class="nav-item nav-link">Contacto</a>
+          <div class="d-flex">
+            <a routerLink="/cursos/checkout" class="d-flex align-items-center mx-2">
+              <button type="button" class="btn position-relative p-0 mx-3 cart-button">
+                <i class="bi bi-cart4 btn-outline-primary" style="font-size: 1.75rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  *ngIf="{quantity: quantity$ | async } as dataCart">
+                  <ng-container *ngIf="dataCart.quantity !== 0">{{dataCart.quantity}}</ng-container>
+                </span>
+              </button>
+            </a>
+            <a class="d-flex align-items-center mx-2">
+              <button routerLink="/login" class="btn btn-primary py-2 px-4 d-lg-block btn-rect" *ngIf="!isAdminLoggedIn">Ingresar</button>
+            </a>
+          </div>
         </ng-container>
 
         <!-- Menú para el cliente -->
         <ng-template #clientMenu>
           <a routerLink="/mis-cursos" class="nav-item nav-link">Mis Cursos</a>
-          <a routerLink="/rutas-estudios" class="nav-item nav-link">Rutas de estudios</a>
           <a routerLink="/mis-certificaciones" class="nav-item nav-link">Mis Certificaciones</a>
+
           <a routerLink="/mis-favoritos" class="nav-item nav-link">Mis Favoritos</a>
+          <a routerLink="/cursos" class="nav-item nav-link">Cursos de formación</a>
           <a routerLink="/cursos/checkout" class="d-flex align-items-center mx-2">
-            <button type="button" class="btn btn-primary position-relative">
-              <i class="bi bi-cart3"></i>
+            <button type="button" class="btn position-relative p-0 mx-3 cart-button">
+              <i class="bi bi-cart4 btn-outline-primary" style="font-size: 1.75rem"></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                 *ngIf="{quantity: quantity$ | async } as dataCart">
                 <ng-container *ngIf="dataCart.quantity !== 0">{{dataCart.quantity}}</ng-container>
@@ -119,7 +94,7 @@
       </div>
 
       <!-- Botón de inicio de sesión -->
-      <a routerLink="/login" class="btn btn-primary py-2 px-4 d-lg-block" *ngIf="!isAdminLoggedIn">Ingresar</a>
+
     </div>
   </nav>
 </div>

@@ -1,0 +1,19 @@
+.course-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.course-details {
+  width: 250px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-rect {
+  border-radius: 0;
+}

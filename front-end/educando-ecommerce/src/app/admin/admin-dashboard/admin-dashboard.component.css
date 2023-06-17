@@ -45,3 +45,7 @@
 .timeline-content {
   margin-left: 15px;
 }
+
+.btn-rect {
+  border-radius: 0 !important;
+}
