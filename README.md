@@ -11,4 +11,4 @@ El maquetado del proyecto se encuentra en el siguiente repositorio: https://gith
 -	<a href="https://github.com/dario1595">DIAZ, Dario</a>
 -	<a href="https://github.com/eduscba">LUNA, Juan Eduardo</a>
 -	<a href="https://github.com/romeomoreno">Moreno, Romeo</a>
--	<a href="https://github.com/tam-tami">VERA, Tamara Elizabet</a>
+-	<p>VERA, Tamara Elizabet - Abandono</p>
