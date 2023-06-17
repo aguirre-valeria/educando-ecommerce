@@ -9,54 +9,47 @@
                     <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">¿Tienes alguna duda?</h6>
                     <h1 class="display-4">Envíanos un mensaje</h1>
                 </div>
-                
+
                 <div class="contact-form">
                     <form class="needs-validation" novalidate id="form-message" [formGroup]="contactoForm" (ngSubmit)="onSubmit()" >
-                        <div class="colum">
-                            <div class="col-6 form-group">
-                                
-                              <input type="text" id="nombre" placeholder="Nombre" class="form-control form-control-lg" formControlName="nombre" [ngClass]="{ 'is-invalid': contactoForm.get('nombre')?.invalid && contactoForm.get('nombre')?.touched }"/>
-
-                             <div class="invalid-feedback" *ngIf="contactoForm.get('nombre')?.invalid && contactoForm.get('nombre')?.touched">
-                             <div *ngIf="contactoForm.get('nombre')?.errors?.['required']">El nombre requerido.</div>Ingresa tu nombre.
+                      <div class="row">
+                        <div class="col-6 form-group">
+                          <input type="text" id="nombre" placeholder="Nombre" class="form-control form-control-lg btn-rect"
+                            formControlName="nombre" [ngClass]="{ 'is-invalid': contactoForm.get('nombre')?.invalid && contactoForm.get('nombre')?.touched }" />
+                          <div class="invalid-feedback"
+                            *ngIf="contactoForm.get('nombre')?.invalid && contactoForm.get('nombre')?.touched">
+                            <div *ngIf="contactoForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+                          </div>
                         </div>
-                            </div>
-
-                            
-
-                            <div class="col-6 form-group">
-
-                        <input type="text" id="name" placeholder="Apellido" class="form-control form-control-lg" formControlName="apellido" [ngClass]="{ 'is-invalid': contactoForm.get('apellido')?.invalid && contactoForm.get('apellido')?.touched }"/>
-                        <div class="invalid-feedback" *ngIf="contactoForm.get('apellido')?.invalid && contactoForm.get('apellido')?.touched">
-                        <div *ngIf="contactoForm.get('apellido')?.errors?.['required']">El apellido es requerido.</div>
-                        Ingresa tu apellido.
+                        <div class="col-6 form-group">
+                          <input type="text" id="name" placeholder="Apellido" class="form-control form-control-lg btn-rect"
+                            formControlName="apellido" [ngClass]="{ 'is-invalid': contactoForm.get('apellido')?.invalid && contactoForm.get('apellido')?.touched }" />
+                          <div class="invalid-feedback"
+                            *ngIf="contactoForm.get('apellido')?.invalid && contactoForm.get('apellido')?.touched">
+                            <div *ngIf="contactoForm.get('apellido')?.errors?.['required']">El apellido es requerido.</div>
+                          </div>
                         </div>
+                        <div class="col-12 form-group">
+                          <input type="email" placeholder="Correo Electrónico" id="email" class="form-control form-control-lg btn-rect"
+                            formControlName="email" [ngClass]="{ 'is-invalid': contactoForm.get('email')?.invalid && contactoForm.get('email')?.touched }" />
+                          <div class="invalid-feedback"
+                            *ngIf="contactoForm.get('email')?.invalid && contactoForm.get('email')?.touched">
+                            <div *ngIf="contactoForm.get('email')?.errors?.['required']">El email es requerido.</div>
+                            <div *ngIf="contactoForm.get('email')?.errors?.['email']">Ingrese un email válido.</div>
+                          </div>
                         </div>
-
-
-                            <div class="col-6 form-group">
-
-                                <input type="email" placeholder="Correo Electronico" id="email" class="form-control form-control-lg" formControlName="email" [ngClass]="{ 'is-invalid': contactoForm.get('email')?.invalid && contactoForm.get('email')?.touched }"/>
-          
-                                <div class="invalid-feedback" *ngIf="contactoForm.get('email')?.invalid && contactoForm.get('email')?.touched"></div>
-                                <div *ngIf="contactoForm.get('email')?.errors?.['required']">El email es requerido.</div>
-                                <div *ngIf="contactoForm.get('email')?.errors?.['email']">Ingrese un email válido.</div>
-                                </div>
+                        <div class="col-12 form-group">
+                          <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Mensaje"
+                            id="mensaje" required="required" formControlName="mensaje"></textarea>
+                          <div class="invalid-feedback">
+                            Déjanos un mensaje.
+                          </div>
                         </div>
-
-
-                        
-                        
-
-                        <div class="form-group">
-                            <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Mensaje" id="mensaje" required="required" formControlName="mensaje"></textarea>
-                            <div class="invalid-feedback">
-                                Déjanos un mensaje.
-                            </div>
+                        <div class="col-12">
+                          <button class="btn btn-primary py-3 px-5 btn-rect" type="submit" [disabled]="contactoForm.invalid"
+                            id="btnSubmitMessage">Enviar mensaje</button>
                         </div>
-                        <div>
-                            <button class="btn btn-primary py-3 px-5" type="submit" [disabled]="contactoForm.invalid" id="btnSubmitMessage">Enviar mensaje</button>
-                        </div>
+                      </div>
                     </form>
                 </div>
             </div>

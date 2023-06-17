@@ -1,16 +1,14 @@
-<div class="card p-2 rounded border-0 shadow-sm">
-  <div class="img-card-container">
-    <img src="{{curso.imagen_url}}" class="card-img-top">
+
+<div class="card mb-3">
+  <div class="square-img-container">
+      <img src="{{curso.imagen_url}}" class="card-img-top opacity-hover border-rect">
+    <div class="button-container">
+      <button class="btn btn-secondary btn-icon fs-4 btn-lg button-hover border-rect" routerLink="details/{{curso.id_categoria}}/{{curso.id_curso}}"><i class="bi bi-eye"></i></button>
+      <button class="btn btn-primary btn-icon fs-4 btn-lg button-hover border-rect" (click)="onClick()"><i class="bi bi-cart-plus"></i></button>
+    </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">{{curso.nombre_curso}}</h5>
-    <p class="card-text">{{curso.descripcion}}</p>
-  </div>
-  <div>
-      <div class="card-body d-flex justify-content-between align-items-center">
-        <span class="fs-5 fw-bold mr-2">$ {{curso.precio}}</span>
-        <button class="btn btn-secondary fs-6 mr-1" routerLink="details/{{curso.id_categoria}}/{{curso.id_curso}}">Detalles</button>
-        <button class="btn btn-primary fs-6" (click)="onClick()">Añadir</button>
-      </div>
+  <div class="card-body text-center">
+    <h5 class="card-title fw-bold">{{curso.nombre_curso}}</h5>
+    <span class="fs-5 fw-bold">$ {{curso.precio}}</span>
   </div>
 </div>

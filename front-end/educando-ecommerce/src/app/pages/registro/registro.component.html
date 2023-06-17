@@ -12,7 +12,7 @@
           <!-- Name input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="name">Nombre</label>
-            <input type="text" id="nombre" class="form-control form-control-lg" formControlName="nombre" [ngClass]="{ 'is-invalid': registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched }"/>
+            <input type="text" id="nombre" class="form-control form-control-lg btn-rect" formControlName="nombre" [ngClass]="{ 'is-invalid': registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched }"/>
         <div class="invalid-feedback" *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
         <div *ngIf="registroForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
               Ingresa tu nombre.
@@ -23,7 +23,7 @@
           <!-- Apellido input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="name">Apellido</label>
-        <input type="text" id="name" class="form-control form-control-lg" formControlName="apellido" [ngClass]="{ 'is-invalid': registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched }"/>
+        <input type="text" id="name" class="form-control form-control-lg btn-rect" formControlName="apellido" [ngClass]="{ 'is-invalid': registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched }"/>
         <div class="invalid-feedback" *ngIf="registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched">
         <div *ngIf="registroForm.get('apellido')?.errors?.['required']">El apellido es requerido.</div>
           Ingresa tu apellido.
@@ -35,7 +35,7 @@
             <div class="form-outline mb-4">
           <label class="form-label" for="email">Correo electrónico</label>
 
-          <input type="email" id="email" class="form-control form-control-lg" formControlName="email" [ngClass]="{ 'is-invalid': registroForm.get('email')?.invalid && registroForm.get('email')?.touched }"/>
+          <input type="email" id="email" class="form-control form-control-lg btn-rect" formControlName="email" [ngClass]="{ 'is-invalid': registroForm.get('email')?.invalid && registroForm.get('email')?.touched }"/>
 
           <div class="invalid-feedback" *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
           <div *ngIf="registroForm.get('email')?.errors?.['required']">El email es requerido.</div>
@@ -49,7 +49,7 @@
           <!-- Password input -->
           <div class="form-group">
             <label for="password">Contraseña:</label>
-            <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': registroForm.get('password')?.invalid && registroForm.get('password')?.touched }">
+            <input type="password" id="password" formControlName="password" class="form-control form-control-lg btn-rect" [ngClass]="{ 'is-invalid': registroForm.get('password')?.invalid && registroForm.get('password')?.touched }">
             <div class="invalid-feedback" *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
               <div *ngIf="registroForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
               <div *ngIf="registroForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
@@ -57,10 +57,10 @@
             </div>
           </div>
 
-
+          <!-- Confirm Password input -->
           <div class="form-group">
             <label class="form-label" for="passwordConfirmation">Confirmar contraseña</label>
-            <input type="password" id="passwordConfirmation" formControlName="passwordConfirmation" class="form-control" [ngClass]="{ 'is-invalid': registroForm.get('passwordConfirmation')?.invalid && registroForm.get('passwordConfirmation')?.touched }">
+            <input type="password" id="passwordConfirmation" formControlName="passwordConfirmation" class="form-control form-control-lg btn-rect" [ngClass]="{ 'is-invalid': registroForm.get('passwordConfirmation')?.invalid && registroForm.get('passwordConfirmation')?.touched }">
             <div class="invalid-feedback" *ngIf="registroForm.get('passwordConfirmation')?.invalid && registroForm.get('passwordConfirmation')?.touched">
               <div *ngIf="registroForm.get('passwordConfirmation')?.errors?.['required']">Debe confirmar la contraseña.</div>
               <div *ngIf="registroForm.get('passwordConfirmation')?.errors?.['validateEqual']">Las contraseñas no coinciden.</div>
@@ -69,12 +69,17 @@
 
 
           <!-- Rol input -->
-          <div class="form-group">
+          <div class="form-group d-flex">
             <label for="rol">Rol:</label><br>
-            <input type="radio" id="rol_profesor" name="id_rol_id" value="2" formControlName="id_rol_id">
-            <label for="rol_profesor">Profesor</label><br>
-            <input type="radio" id="rol_estudiante" name="id_rol_id" value="1" formControlName="id_rol_id">
-            <label for="rol_estudiante">Estudiante</label><br>
+            <div class="mx-3">
+              <input class="mx-2" type="radio" id="rol_profesor" name="id_rol_id" value="2" formControlName="id_rol_id">
+              <label class="text-uppercase fw-bold" for="rol_profesor">Profesor</label>
+            </div>
+            <div>
+              <input class="mx-2" type="radio" id="rol_estudiante" name="id_rol_id" value="1" formControlName="id_rol_id">
+              <label class="text-uppercase fw-bold" for="rol_estudiante">Estudiante</label>
+            </div>
+
           </div>
 
           <!-- <div class="d-flex justify-content-start align-items-center mb-4"> -->
@@ -87,13 +92,14 @@
 
 
           <!-- Submit button -->
-          <button type="submit" [disabled]="registroForm.invalid" id="btnRegister" class="btn btn-primary py-2 px-4 d-lg-block btn-block" >Regístrate</button>
+          <button type="submit" [disabled]="registroForm.invalid" id="btnRegister" class="btn btn-primary py-2 px-4 d-lg-block btn-block btn-rect" >Regístrate</button>
 
           <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0 text-muted">O</p>
+            <p class="text-center fw-bold mx-3 mb-0 text-muted text-center">O</p>
           </div>
 
-          <a class="btn btn-primary py-2 px-4 d-lg-block btn-block" routerLink="/login"
+          <!-- Iniciar sesión -->
+          <a class="btn btn-primary py-2 px-4 d-lg-block btn-block btn-rect" routerLink="/login"
             role="button">Inicia sesión</a>
         </form>
       </div>

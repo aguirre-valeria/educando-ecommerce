@@ -1,19 +1,80 @@
 .card {
-    width: 300px;
-    min-height: 440px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    text-align: center;
+  width: 300px; /* Ajusta el valor según tus necesidades */
+  height: 450px;
+  border-radius: 0;
+}
+
+.border-rect {
+  border-radius: 0;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.square-img-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Para crear un cuadro cuadrado */
+  overflow: hidden;
+}
+
+.square-img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.square-img-container:hover img {
+  opacity: 0.5;
+}
+
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.square-img-container:hover .button-container {
+  opacity: 1;
+}
+
+.card-title {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.fs-5 {
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  margin-bottom: 1rem;
+}
+
+.btn-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
   }
-  .img-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 4;
   }
-  .img-card-container img {
-    height: 110px;
-    width: auto;
-  }
-  
+}

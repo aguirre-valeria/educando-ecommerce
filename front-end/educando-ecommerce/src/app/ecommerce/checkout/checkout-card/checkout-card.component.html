@@ -1,8 +1,19 @@
 <div class="d-flex justify-content-between align-items-center" *ngFor="let item of cart">
-    <div class="d-flex justify-content-between p-2 gap-3 item-cart align-items-center w-100">
-      <span class="fs-4">{{item.nombre_curso}}</span>
-      <div>
-        <span class="me-2 fs-4">$ {{item.precio * item.qty}}</span>
+  <div class="d-flex justify-content-between p-2 gap-3 item-cart align-items-center w-100">
+    <div>
+      <img [src]="item.imagen_url" alt="Course Image" class="course-image">
+    </div>
+    <div>
+      <div class="course-details">
+        <h5>{{ item.nombre_curso }}</h5>
+        <p>{{ item.descripcion | slice:0:50 }}...</p>
       </div>
     </div>
+    <div>
+      <span class="me-2 fs-4">Precio: $ {{ item.precio * item.qty }}</span>
+      <button class="btn btn-danger btn-lg btn-rect" (click)="removeFromCart(item)">
+        <i class="bi bi-trash "></i>
+      </button>
+    </div>
+  </div>
 </div>

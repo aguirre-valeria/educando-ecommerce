@@ -1,51 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Curso } from 'src/app/interfaces/cursos.interface';
 import { CursosService } from 'src/app/services/cursos.service';
+import KeenSlider, { KeenSliderInstance } from "keen-slider";
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ["../../../../node_modules/keen-slider/keen-slider.min.css", './inicio.component.css']
 })
-export class InicioComponent implements OnInit {
+
+export class InicioComponent implements OnInit, OnDestroy {
+  @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
 
   cursos: Curso | undefined | any;
   cursosFiltrados: Curso | undefined | any;
-  //selectedCourseId!: string; // Variable para almacenar el ID del curso seleccionado en el formulario
   selectedCourseId: string = 'Selecciona el curso';
   curso: any;
 
-  constructor(private cursoService: CursosService, private router: Router) {}
+  slider: KeenSliderInstance | null = null
 
-  ngOnInit(): void {
-    this.obtenerCursos(); // Llama a la función para obtener los cursos al inicializar el componente
+  constructor(
+    private cursoService: CursosService,
+    private router: Router
+  ) {}
+
+  ngOnDestroy() {
+    if (this.slider) {
+      this.slider.destroy();
+    }
   }
 
+  ngOnInit(): void {
+    this.obtenerCursos();
+  }
+
+  // Obtener la lista de cursos desde el servicio
   obtenerCursos(): void {
     this.cursoService.getCursos().subscribe(cursos => {
       this.cursos = cursos;
-      console.log(this.cursos);
       this.filtrarCursos();
+      this.inicializarCarrusel();
     });
   }
 
+  // Inicializar el carrusel utilizando la librería KeenSlider
+  inicializarCarrusel(): void {
+    if (this.sliderRef && this.sliderRef.nativeElement) {
+      setTimeout(() => {
+        this.slider = new KeenSlider(this.sliderRef.nativeElement, {
+          loop: true,
+          mode: "free",
+          slides: {
+            perView: 3,
+            spacing: 15,
+          },
+        });
+      }, 0);
+    }
+  }
+
+   // Navegar a la página de detalles de un curso
   irADetalles(cursoId: string): void {
     this.router.navigate(['cursos/details', cursoId]);
   }
 
+  // Filtrar los cursos para mostrar solo algunos en la vista inicial
   filtrarCursos(): void {
     this.cursosFiltrados = this.cursos.slice(0, 6);
-    console.log(this.cursosFiltrados)
+    //console.log(this.cursosFiltrados)
   }
 
+  // Actualizar el ID del curso seleccionado en el formulario
   actualizarSelectedCourseId(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.selectedCourseId = target.value;
   }
 
+  // Realizar la compra del curso seleccionado
   comprarAhora(): void {
-    console.log(this.selectedCourseId)
     if (this.selectedCourseId) {
       this.router.navigate(['cursos/details', this.selectedCourseId]);
     }
