@@ -7,6 +7,8 @@ import { DetailsComponent } from './cursos-container/details/details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutCardComponent } from './checkout/checkout-card/checkout-card.component';
 import { RouterModule } from '@angular/router';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgxPayPalModule,
+    FormsModule,
   ],
   exports: [
     CursosComponent,
@@ -29,7 +33,7 @@ import { RouterModule } from '@angular/router';
     DetailsComponent,
     CheckoutComponent,
     CheckoutCardComponent
-  ]
+  ],
 })
 export class EcommerceModule {
 

@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
+import { NgxPayPalModule } from 'ngx-paypal';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +26,8 @@ import { AdminModule } from './admin/admin.module';
     EcommerceModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AdminModule
+    AdminModule,
+    NgxPayPalModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -107,3 +107,4 @@ export class CursosComponent {
     this.tituloCursos = 'Todos nuestros cursos';
   }
 }
+

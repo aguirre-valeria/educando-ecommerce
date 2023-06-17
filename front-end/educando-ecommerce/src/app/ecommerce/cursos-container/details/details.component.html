@@ -1,18 +1,31 @@
-<div class="detail-main-container d-flex flex-column justify-content-center align-items-center">
-    <div class="container shadow-lg rounded detail-container d-flex justify-content-around align-items-center">
-        <div class="img-card-detail">
-            <img src="{{curso.imagen_url}}" class="img-detail pt-4">
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+        <div class="position-relative h-100">
+          <img class="position-absolute w-100 h-100" src="{{curso.imagen_url}}" style="object-fit: cover;">
         </div>
-        <div class="d-flex justify-content-around flex-column align-items-start detail-text">
-            <div class="pb-4">
-                <h5 class="card-title mb-4">{{curso.nombre_curso}}</h5>
-                <p class="card-text">{{curso.descripcion}}</p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center buttons-details">
-                <span class="fs-4 fw-bold">$ {{curso.precio}}</span>
-                <button class="btn btn-primary fs-6" (click)="onClick()">Añadir</button>
-                <button class="btn btn-secondary fs-6" routerLink="/cursos">Volver</button>
-            </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="section-title position-relative mb-4">
+          <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">{{nombreCategoria}}</h6>
+          <h1 class="display-4">{{curso.nombre_curso}}</h1>
         </div>
+        <p>{{curso.descripcion}}</p>
+        <div class="row pt-3 mx-0">
+          <div class="col-12 px-0">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="col-md-4 col-sm-4">
+                <span class="fs-4 fw-bold">Precio: $ {{curso.precio}}</span>
+              </div>
+              <div class="col-md-8 col-sm-12 d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
+                <button class="btn btn-primary fs-5 me-4 btn-rect" (click)="onClick()">Añadir</button>
+                <button class="btn btn-secondary fs-5 btn-rect" routerLink="/cursos">Volver</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
