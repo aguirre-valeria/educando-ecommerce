@@ -20,11 +20,8 @@ const routes: Routes = [
     { path: 'administradores', component: AdministradoresComponent },
     { path: 'cursos', component: CursosComponent, },
     { path: 'cursos/checkout', component: CheckoutComponent },
-    { path: 'cursos/details/:category/:id', component: DetailsComponent },
-    { path: 'cursos/details/:id', component: DetailsComponent },
+    { path: 'cursos/details/:idCategoria/:idCurso', component: DetailsComponent },
     { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-
-
 ];
 
 @NgModule({
