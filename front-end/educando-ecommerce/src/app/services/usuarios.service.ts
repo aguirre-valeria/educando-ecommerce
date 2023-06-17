@@ -8,8 +8,8 @@ import { Usuario } from '../interfaces/usuario.interface';
 })
 export class UsuariosService {
 
-  private apiUrl = 'http://127.0.0.1:8000/';
-  // private apiUrl = 'https://educando-test.onrender.com/';
+//  private apiUrl = 'http://127.0.0.1:8000/';
+ private apiUrl = 'https://educando-test.onrender.com/';
 
   constructor(private http: HttpClient) {}
 
