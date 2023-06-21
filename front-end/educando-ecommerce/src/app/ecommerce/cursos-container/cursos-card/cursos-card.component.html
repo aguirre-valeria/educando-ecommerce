@@ -1,7 +1,7 @@
 
 <div class="card mb-3">
   <div class="square-img-container">
-      <img src="{{curso.imagen_url}}" class="card-img-top opacity-hover border-rect">
+      <img [src]="curso.imagen_url" class="card-img-top opacity-hover border-rect">
     <div class="button-container">
       <button class="btn btn-secondary btn-icon fs-4 btn-lg button-hover border-rect" routerLink="details/{{curso.id_categoria}}/{{curso.id_curso}}"><i class="bi bi-eye"></i></button>
       <button class="btn btn-primary btn-icon fs-4 btn-lg button-hover border-rect" (click)="onClick()"><i class="bi bi-cart-plus"></i></button>

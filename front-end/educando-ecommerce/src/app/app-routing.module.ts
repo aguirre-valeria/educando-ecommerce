@@ -11,8 +11,8 @@ import { CheckoutComponent } from './ecommerce/checkout/checkout.component';
 import { DetailsComponent } from './ecommerce/cursos-container/details/details.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/inicio', pathMatch: 'full'},
-     { path: 'inicio', component: InicioComponent },
+  {path: '*', redirectTo: '', pathMatch: 'full'},
+     { path: '', component: InicioComponent },
     { path: 'contacto', component: ContactoComponent },
     { path: 'login', component: LoginComponent },
     { path: 'nosotros', component: NosotrosComponent },

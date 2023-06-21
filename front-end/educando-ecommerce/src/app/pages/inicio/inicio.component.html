@@ -15,7 +15,7 @@
       <div class="card keen-slider__slide" style="width: 18rem; margin: 5px;">
         <div class="image-container">
           <img [src]="curso.imagen_url" class="card-img-top" alt="...">
-          <button class="btn btn-secondary fs-4 btn-details bg-secondary btn-lg" (click)="irADetalles(curso.id_curso)">Detalles</button>
+          <button class="btn btn-secondary fs-4 btn-details bg-secondary btn-lg" (click)="irADetalles(curso.id_categoria, curso.id_curso)">Detalles</button>
         </div>
         <div class="card-body bg-color-{{i}}">
           <h5 class="card-title text-white text-center">{{ curso.nombre_curso }}</h5>
@@ -33,10 +33,10 @@
               <div class="form-row">
                   <div class="col-sm-6">
                       <div class="form-group">
-                          <select class="custom-select bg-light border-0 px-3" style="height: 60px;" [(ngModel)]="selectedCourseId" name="selectedCourseId" (change)="actualizarSelectedCourseId($event)">
-                              <option [value]="selectedCourseId">Selecciona el curso</option>
-                              <option *ngFor="let curso of cursos" [value]="curso.id_curso">{{ curso.nombre_curso }}</option>
-                          </select>
+                        <select class="custom-select bg-light border-0 px-3" style="height: 60px;" [(ngModel)]="selectedCourseId" name="selectedCourseId" (change)="actualizarSelectedCourseId($event)">
+                          <option value="">Selecciona el curso</option>
+                          <option *ngFor="let curso of cursos" [value]="curso.id_curso">{{ curso.nombre_curso }}</option>
+                        </select>
                       </div>
                   </div>
                   <div class="col-sm-6">

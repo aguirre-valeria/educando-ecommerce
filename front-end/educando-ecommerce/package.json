@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration=production --output-path=dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +24,7 @@
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "crypto-js": "^4.1.1",
+    "firebase": "^9.22.2",
     "jquery": "^3.7.0",
     "json-server": "^0.17.3",
     "keen-slider": "^6.8.5",
