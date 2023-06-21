@@ -1,4 +1,4 @@
-# PROYECTO: Educando E-commerce
+# PROYECTO: Educando Ecommerce
 
 Página educativa de programación donde el usuario podrá buscar, valorar, aportar y definir el curso o material de su elección. El proyecto “Educando” tiene como objetivo ofrecer una amplia variedad de recursos y herramientas educativas online para estudiantes, profesores y padres de familia. A su vez, la plataforma contará con una tienda virtual donde se podrá comprar cursos en línea y material educativo.
 
@@ -10,5 +10,13 @@ El maquetado del proyecto se encuentra en el siguiente repositorio: https://gith
 -	<a href="https://github.com/JuanBalza">BALZA, Juan</a>
 -	<a href="https://github.com/dario1595">DIAZ, Dario</a>
 -	<a href="https://github.com/eduscba">LUNA, Juan Eduardo</a>
--	<a href="https://github.com/romeomoreno">Moreno, Romeo</a>
--	<p>VERA, Tamara Elizabet - Abandono</p>
+-	<a href="https://github.com/romeomoreno">MORENO, Romeo</a>
+-	<p>VERA, Tamara Elizabet - Abandonó</p>
+
+## VIDEO DEMO
+Demo final en video con participación de todo el equipo describiendo las funcionalidades del proyecto.
+https://youtu.be/Bkjflx6rFMw
+
+## SITIO ONLINE
+Sitio publicado en servidor.
+https://ecommerce-educando.web.app/
