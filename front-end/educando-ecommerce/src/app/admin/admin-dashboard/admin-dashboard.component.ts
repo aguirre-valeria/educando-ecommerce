@@ -29,19 +29,19 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     this.autenticacionService.getCambioEstadoAutenticacion().subscribe(autenticado => {
       if (autenticado) {
-        console.log(this.currentUser)
+        // console.log(this.currentUser)
         this.currentUser = this.autenticacionService.getCurrentUser();
         this.userName = this.currentUser?.nombre || '';
         this.userSurname = this.currentUser?.apellido || '';
         this.userRole = this.currentUser?.id_rol_id || 1;
       } else {
-        console.log(this.currentUser)
+        // console.log(this.currentUser)
         this.currentUser = null;
         this.userName = 'John Doe';
         this.userRole = 1;
       }
     });
-    
+
     this.currentUser = this.autenticacionService.getCurrentUser();
     this.userName = this.currentUser?.nombre || '';
     this.userSurname = this.currentUser?.apellido || '';
@@ -58,13 +58,13 @@ export class AdminDashboardComponent implements OnInit {
       (response) => {
         // Actualiza los datos de los cursos del usuario
         this.courses = response;
-        console.log(this.courses)
+        // console.log(this.courses)
         this.purchasedCoursesCount = this.courses.length;
         this.completedCoursesCount = this.courses.filter((course) => course.progress === 100).length;
         this.certificationsCount = this.completedCoursesCount;
         if (this.courses.length > 0) {
           const lastCourse = this.courses[this.courses.length - 1];
-          console.log(lastCourse)
+          // console.log(lastCourse)
           this.lastCourseTitle = lastCourse.nombre_curso;
           this.lastCourseDescription = lastCourse.descripcion_curso;
           this.lastCourseImage = lastCourse.imagen_url;

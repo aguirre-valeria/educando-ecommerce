@@ -39,7 +39,7 @@
       <div class="navbar-nav mx-auto py-0">
         <!-- Enlaces comunes -->
         <ng-container *ngIf="!isAdminLoggedIn; else clientMenu">
-          <a routerLink="/inicio" routerLinkActive="router-link-active" class="nav-item nav-link active">Inicio</a>
+          <a routerLink="/" routerLinkActive="router-link-active" class="nav-item nav-link active">Inicio</a>
           <a routerLink="/nosotros" class="nav-item nav-link">Sobre Nosotros</a>
           <a routerLink="/cursos" class="nav-item nav-link">Cursos</a>
           <a routerLink="/administradores" class="nav-item nav-link">Administradores</a>
@@ -86,7 +86,7 @@
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" routerLink="/perfil">Editar perfil</a></li>
                 <li><a class="dropdown-item">Configuraciones</a></li>
-                <li><a class="dropdown-item" routerLink="/inicio" (click)="logout()">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" routerLink="/" (click)="logout()">Cerrar sesión</a></li>
               </ul>
             </div>
           </div>

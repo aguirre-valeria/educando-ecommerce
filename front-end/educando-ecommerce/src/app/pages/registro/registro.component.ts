@@ -76,8 +76,8 @@ export class RegistroComponent {
         console.error('Error en el registro:', error);
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: '¡Error en el registro!',
+          title: '¡Error en el registro!',
+          text: error.error.mensaje,
         })
       }
     );

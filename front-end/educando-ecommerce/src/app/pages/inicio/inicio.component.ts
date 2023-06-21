@@ -16,7 +16,6 @@ export class InicioComponent implements OnInit, OnDestroy {
   cursos: Curso | undefined | any;
   cursosFiltrados: Curso | undefined | any;
   selectedCourseId: string = 'Selecciona el curso';
-  curso: any;
 
   slider: KeenSliderInstance | null = null
 
@@ -33,6 +32,7 @@ export class InicioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.obtenerCursos();
+    this.selectedCourseId = "";
   }
 
   // Obtener la lista de cursos desde el servicio
@@ -61,8 +61,8 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
    // Navegar a la página de detalles de un curso
-  irADetalles(cursoId: string): void {
-    this.router.navigate(['cursos/details', cursoId]);
+  irADetalles(categoriaId: string, cursoId: string): void {
+    this.router.navigate(['cursos/details', categoriaId, cursoId]);
   }
 
   // Filtrar los cursos para mostrar solo algunos en la vista inicial
@@ -80,7 +80,12 @@ export class InicioComponent implements OnInit, OnDestroy {
   // Realizar la compra del curso seleccionado
   comprarAhora(): void {
     if (this.selectedCourseId) {
-      this.router.navigate(['cursos/details', this.selectedCourseId]);
+      const selectedCourseIdNumber = Number(this.selectedCourseId);
+      const cursoEncontrado = this.cursos.find((curso: Curso) => curso.id_curso === selectedCourseIdNumber);
+      if (cursoEncontrado) {
+        const categoriaId = cursoEncontrado.id_categoria;
+        this.router.navigate(['cursos/details', categoriaId, this.selectedCourseId]);
+      }
     }
   }
 }

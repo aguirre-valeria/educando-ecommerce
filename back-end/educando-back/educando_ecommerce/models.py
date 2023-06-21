@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser,PermissionsMixin,BaseUserManager,Group)
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
   
@@ -61,7 +60,6 @@ class Usuario(AbstractBaseUser,PermissionsMixin):
         db_table = 'usuario'
         verbose_name = 'Usuario registrado mediante el front'
         verbose_name_plural = 'Usuarios registrados mediante el front'
-    
 
     def str(self):
         return str(self.id_usuario)
@@ -87,7 +85,7 @@ class Curso(models.Model):
     duracion = models.IntegerField(null=True)
     precio = models.IntegerField(null=True)
     descripcion = models.CharField(max_length= 2000, null=True)
-    calificacion = models.IntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(10)])
+    calificacion= models.FloatField( null=True,default=None)
     fecha_alta_curso = models.DateTimeField(null=True, auto_now_add=True)
     imagen_url = models.URLField(null=True,max_length=500)
     class Meta:
@@ -103,8 +101,6 @@ class MisCurso(models.Model):
     id_mis_curso = models.AutoField(primary_key=True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
     id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, related_name='mis_curso_cursos')
-    avance_curso = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
-
     class Meta:
         db_table = 'mis_curso'
         verbose_name = 'Mi Curso comprado'
@@ -115,12 +111,10 @@ class MisCurso(models.Model):
 
 class Carrito(models.Model):
     id_carrito = models.AutoField(primary_key=True)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, related_name='carrito')
     id_curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True)
     nombre_curso = models.CharField(max_length=80, null=True)
     cantidad = models.IntegerField(null=True)
     total_suma = models.FloatField(null=True)
-
     class Meta:
         db_table = 'carrito'
         verbose_name = 'Curso seleccionado para comprar'
@@ -128,20 +122,7 @@ class Carrito(models.Model):
     
     def __str__(self) :
         return str(self.id_carrito)
-    
-class Compra(models.Model):
-    id_compra = models.AutoField(primary_key=True)
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True, related_name='compras')
-    importe_total = models.FloatField(null=True)
-    fecha_compra = models.DateTimeField(null=True, auto_now_add=True)
 
-    class Meta:
-        db_table = 'compra'
-        verbose_name = 'Compra realizada'
-        verbose_name_plural = 'Compras realizadas'
-
-    def __str__(self) :
-        return str(self.id_compra)        
 class Foro(models.Model):
     id_foro = models.AutoField(primary_key=True)
     id_usuarios = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)

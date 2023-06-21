@@ -1,6 +1,6 @@
 from  rest_framework import serializers
 
-from .models import Rol, Usuario, Categoria,Curso, MisCurso, Carrito, Compra, Foro, Contacto
+from .models import Rol, Usuario, Categoria,Curso, MisCurso, Carrito, Foro, Contacto
 
 class RolSerializer(serializers.ModelSerializer):    
     class Meta:
@@ -50,12 +50,10 @@ class MisCursoSerializer(serializers.ModelSerializer):
     # Agregar campo de descripción
     nombre_curso = serializers.CharField(source='id_curso.nombre_curso', read_only=True)
     descripcion_curso = serializers.CharField(source='id_curso.descripcion', read_only=True)
-    calificacion = serializers.CharField(source='id_curso.calificacion', read_only=True)
-    imagen_url = serializers.CharField(source='id_curso.imagen_url', read_only=True)
     
     class Meta:
         model = MisCurso
-        fields = ['id_mis_curso', 'id_usuario', 'id_curso', 'nombre_curso', 'descripcion_curso','imagen_url','avance_curso','calificacion']
+        fields = ['id_mis_curso', 'id_usuario', 'id_curso', 'nombre_curso', 'descripcion_curso']
 
 
 #===========================================================================================================================================================================
@@ -63,12 +61,6 @@ class CarritoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Carrito
         fields = '__all__'
-
-class CompraSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Compra
-        fields = ('id_compra', 'id_usuario', 'importe_total', 'fecha_compra')
-        read_only_fields = ('id_compra', 'fecha_compra')
 
 class ForoSerializer(serializers.ModelSerializer):   
     class Meta:
